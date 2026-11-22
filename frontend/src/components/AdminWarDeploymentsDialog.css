@@ -1,0 +1,7 @@
+.admin-warfare-member { display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(180px, auto); align-items: center; gap: 12px; padding: 12px; border: 1px solid rgba(255,255,255,.08); background: rgba(0,0,0,.12); }
+.admin-warfare-record { padding: 12px; border-left: 3px solid rgba(106,176,240,.72); background: rgba(255,255,255,.025); }
+.admin-warfare-json { max-height: 280px; margin: 10px 0 0; padding: 12px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; background: rgba(0,0,0,.24); }
+@media (max-width: 600px) {
+  .admin-warfare-member { grid-template-columns: auto minmax(0, 1fr); }
+  .admin-warfare-member > .MuiTypography-caption { grid-column: 2; }
+}

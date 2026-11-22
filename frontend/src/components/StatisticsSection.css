@@ -1,0 +1,887 @@
+/* Стили для вкладок в тёмной теме */
+.nav-tabs {
+  border-bottom: 1px solid #333;
+  margin-bottom: 16px;
+  background: #1a1a1a;
+  padding: 0 8px;
+}
+
+.nav-tabs .nav-link {
+  border: none;
+  color: #b0b0b0;
+  font-weight: 600;
+  padding: 10px 16px;
+  margin-right: 4px;
+  border-radius: 6px 6px 0 0;
+  display: flex;
+  align-items: center;
+  background: #222;
+  transition: all 0.2s ease;
+  font-size: 13px;
+}
+
+.nav-tabs .nav-link.active {
+  background: #ff6b35;
+  color: white;
+  border: none;
+}
+
+.nav-tabs .nav-link:hover {
+  background: #2a2a2a;
+  color: #ffffff;
+}
+
+.nav-tabs .nav-link.active:hover {
+  background: #ff6b35;
+  color: white;
+}
+
+/* Контент вкладок */
+.tab-content {
+  background: #1a1a1a;
+  padding: 16px;
+  border: 1px solid #333;
+}
+
+/* Основная статистика */
+.main-stats-container {
+  margin-bottom: 16px;
+}
+
+.main-stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.main-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.main-stat-card {
+  background: #222;
+  border-radius: 6px;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid #333;
+  transition: all 0.2s ease;
+}
+
+.main-stat-card:hover {
+  background: #2a2a2a;
+  border-color: #444;
+}
+
+.main-stat-card.wins {
+  border-color: #28a745;
+  background: rgba(40, 167, 69, 0.1);
+}
+
+.main-stat-card.losses {
+  border-color: #dc3545;
+  background: rgba(220, 53, 69, 0.1);
+}
+
+.main-stat-icon {
+  margin-bottom: 8px;
+}
+
+.main-stat-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.main-stat-label {
+  font-size: 12px;
+  color: #b0b0b0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.main-stats-progress {
+  margin-top: 16px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+}
+
+.progress-fill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.progress-fill.wins {
+  background: linear-gradient(90deg, #28a745, #20c997);
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+}
+
+.progress-fill.losses {
+  background: linear-gradient(90deg, #dc3545, #ff4757);
+  box-shadow: 0 0 10px rgba(220, 53, 69, 0.5);
+}
+
+/* Винрейт бейджи */
+.winrate-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.winrate-badge.excellent {
+  background: #28a745;
+  color: white;
+}
+
+.winrate-badge.good {
+  background: #17a2b8;
+  color: white;
+}
+
+.winrate-badge.average {
+  background: #ffc107;
+  color: white;
+}
+
+.winrate-badge.poor {
+  background: #dc3545;
+  color: white;
+}
+
+/* Топ фракции */
+.top-factions-container,
+.top-maps-container {
+  margin-bottom: 16px;
+}
+
+.top-factions-grid,
+.top-maps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.top-faction-card,
+.top-map-card {
+  background: #222;
+  border-radius: 6px;
+  padding: 16px;
+  border: 1px solid #333;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.top-faction-card:hover,
+.top-map-card:hover {
+  background: #2a2a2a;
+  border-color: #444;
+}
+
+.rank-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ff6b35;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.faction-info,
+.map-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.faction-icon,
+.map-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+}
+
+.top-map-card .map-icon {
+  width: 88px;
+  height: 58px;
+  flex: 0 0 88px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.top-map-card .map-icon.is-fallback {
+  object-fit: contain;
+  padding: 14px;
+}
+
+.map-preview-button,
+.match-map-preview-button {
+  display: block;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.map-preview-button:focus-visible,
+.match-map-preview-button:focus-visible {
+  outline: 2px solid #ff6969;
+  outline-offset: 2px;
+}
+
+.faction-details,
+.map-details {
+  flex: 1;
+}
+
+.faction-name,
+.map-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.faction-stats,
+.map-stats {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.faction-stats .wins,
+.faction-stats .losses {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.faction-stats .wins {
+  background: rgba(40, 167, 69, 0.2);
+  color: #28a745;
+}
+
+.faction-stats .losses {
+  background: rgba(220, 53, 69, 0.2);
+  color: #dc3545;
+}
+
+.faction-stats .winrate,
+.map-stats .winrate {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.faction-stats .winrate.excellent,
+.map-stats .winrate.excellent {
+  color: #28a745;
+}
+
+.faction-stats .winrate.good,
+.map-stats .winrate.good {
+  color: #17a2b8;
+}
+
+.faction-stats .winrate.average,
+.map-stats .winrate.average {
+  color: #ffc107;
+}
+
+.faction-stats .winrate.poor,
+.map-stats .winrate.poor {
+  color: #dc3545;
+}
+
+.map-stats .games {
+  color: #b0b0b0;
+  font-size: 11px;
+}
+
+/* Статистика по фракциям */
+.factions-stats-container {
+  /* Убираем лишний контейнер */
+}
+
+.factions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 12px;
+}
+
+.faction-stat-card {
+  background: #222;
+  border-radius: 6px;
+  padding: 16px;
+  border: 1px solid #333;
+  transition: all 0.2s ease;
+}
+
+.faction-stat-card:hover {
+  background: #2a2a2a;
+  border-color: #444;
+}
+
+.faction-header {
+  margin-bottom: 12px;
+}
+
+.faction-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.faction-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+}
+
+.faction-details {
+  flex: 1;
+}
+
+.faction-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 3px;
+}
+
+.faction-meta {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.games-count {
+  color: #b0b0b0;
+}
+
+.faction-stats {
+  margin-top: 12px;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 12px;
+  border-radius: 6px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+}
+
+.stat-item.wins {
+  border-color: #28a745;
+  background: rgba(40, 167, 69, 0.1);
+}
+
+.stat-item.losses {
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  background: rgba(220, 53, 69, 0.1);
+}
+
+.stat-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #b0b0b0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.faction-progress {
+  margin-top: 12px;
+}
+
+/* Все матчи */
+.all-matches-container {
+  /* Убираем лишний контейнер */
+}
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 12px;
+}
+
+.match-card {
+  background: #222;
+  border-radius: 6px;
+  padding: 16px;
+  border: 1px solid #333;
+  transition: all 0.2s ease;
+}
+
+.match-card:hover {
+  background: #2a2a2a;
+  border-color: #444;
+}
+
+.match-card.win {
+  border-color: #28a745;
+  background: rgba(40, 167, 69, 0.1);
+}
+
+.match-card.loss {
+  border-color: #dc3545;
+  background: rgba(220, 53, 69, 0.1);
+}
+
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.match-result {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.result-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.result-badge.win {
+  background: #28a745;
+  color: white;
+}
+
+.result-badge.loss {
+  background: #dc3545;
+  color: white;
+}
+
+.match-date {
+  font-size: 11px;
+  color: #b0b0b0;
+}
+
+.match-map {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #b0b0b0;
+}
+
+.map-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.match-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.player-info,
+.opponent-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.faction-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+}
+
+.player-details,
+.opponent-details {
+  flex: 1;
+}
+
+.player-name,
+.opponent-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.player-faction,
+.opponent-faction {
+  font-size: 11px;
+  color: #b0b0b0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vs-separator {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff6b35;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* LIVE матчи */
+.live-matches-container {
+  /* Убираем лишний контейнер */
+}
+
+.live-matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 12px;
+}
+
+.live-match-card {
+  background: #222;
+  border-radius: 6px;
+  padding: 16px;
+  border: 1px solid #ff6b35;
+  background: rgba(255, 107, 53, 0.1);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.live-match-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6b35, #f7931e, #ff6b35);
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+.live-match-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+}
+
+.live-match-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ff6b35;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: #ff6b35;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+.live-match-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.live-match-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-text {
+  font-size: 12px;
+  color: #ff6b35;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.match-duration {
+  font-size: 12px;
+  color: #b0b0b0;
+  font-weight: 600;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .nav-tabs {
+    padding: 0 5px;
+  }
+  
+  .nav-tabs .nav-link {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+  
+  .tab-content {
+    padding: 15px;
+  }
+  
+  .main-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .top-factions-grid,
+  .top-maps-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .factions-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .matches-grid,
+  .live-matches-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .match-details,
+  .live-match-details {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .vs-separator {
+    transform: rotate(90deg);
+  }
+  
+  .stat-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.match-map-preview {
+  width: 44px;
+  height: 30px;
+  flex: 0 0 44px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+
+.match-map-preview.is-fallback {
+  object-fit: contain;
+  padding: 6px;
+}
+
+.profile-map-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.82);
+}
+
+.profile-map-viewer__content {
+  width: min(920px, 94vw);
+  max-height: 90vh;
+  overflow: hidden;
+  background: #171919;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+}
+
+.profile-map-viewer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 52px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-map-viewer__header button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  color: #fff;
+  background: transparent;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.profile-map-viewer__content > img {
+  display: block;
+  width: 100%;
+  max-height: calc(90vh - 53px);
+  object-fit: contain;
+  background: #0e0f0f;
+}
+.elo-history-container {
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(16, 18, 20, 0.88);
+}
+
+.elo-history-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.elo-history-heading p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.78rem;
+}
+
+.elo-history-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.elo-history-card {
+  min-width: 0;
+  padding: 14px;
+  border-left: 3px solid rgba(255, 83, 83, 0.78);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.elo-history-card-header,
+.elo-history-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.elo-history-card-header > div {
+  display: grid;
+  gap: 2px;
+}
+
+.elo-history-card-header span,
+.elo-history-card-footer {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.74rem;
+}
+
+.elo-history-card-header strong {
+  color: #fff;
+  font-size: 1.25rem;
+}
+
+.elo-change {
+  padding: 4px 7px;
+  border: 1px solid currentColor;
+  font-weight: 800;
+}
+
+.elo-change.positive {
+  color: #52d59d;
+}
+
+.elo-change.negative {
+  color: #ff7171;
+}
+
+.elo-history-chart {
+  display: block;
+  width: 100%;
+  height: 112px;
+  margin: 12px 0 9px;
+  overflow: visible;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.025), transparent);
+}
+
+.elo-chart-axis {
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 1;
+}
+
+@media (max-width: 760px) {
+  .elo-history-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .elo-history-card-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 3px;
+  }
+}

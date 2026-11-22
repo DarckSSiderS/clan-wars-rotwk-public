@@ -1,0 +1,51 @@
+.cycle-diplomacy { width: min(1480px, calc(100% - 48px)); margin-inline: auto; padding: 32px 0 64px; color: var(--text, #e5e5e5); letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.cycle-diplomacy *, .cd-dialog-button { box-sizing: border-box; min-width: 0; letter-spacing: 0; }
+.cycle-diplomacy h1 { font-size: 28px; margin: 0; }
+.cycle-diplomacy h2 { font-size: 20px; margin: 0 0 16px; }
+.cycle-diplomacy h3 { font-size: 17px; margin: 24px 0 12px; }
+.cycle-diplomacy h1, .cycle-diplomacy h2, .cycle-diplomacy h3 { text-wrap: balance; overflow-wrap: anywhere; }
+.cycle-diplomacy p, .cycle-diplomacy li, .cycle-diplomacy a, .cycle-diplomacy label { overflow-wrap: anywhere; text-wrap: pretty; }
+.cycle-diplomacy .cd-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+.cycle-diplomacy .cd-header p { margin: 8px 0 0; color: #b9b9b9; }
+.cycle-diplomacy button, .cycle-diplomacy input, .cycle-diplomacy select, .cd-dialog-button { font: inherit; color: inherit; background: #202020; border: 1px solid #666; border-radius: 4px; padding: 9px 12px; min-height: 42px; }
+.cycle-diplomacy button, .cd-dialog-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; white-space: normal; }
+.cycle-diplomacy button:hover, .cd-dialog-button:hover { border-color: var(--gold, #cdb472); }
+.cycle-diplomacy button:disabled { opacity: .6; cursor: default; }
+.cycle-diplomacy :focus-visible, .cd-dialog-button:focus-visible { outline: 2px solid var(--gold2, #e4cb8e); outline-offset: 3px; }
+.cycle-diplomacy button svg, .cd-dialog-button svg, .cycle-diplomacy .cd-status svg, .cycle-diplomacy .cd-filters svg { width: 20px; height: 20px; flex: 0 0 20px; }
+.cycle-diplomacy a { color: var(--gold2, #e4cb8e); text-underline-offset: 3px; }
+.cycle-diplomacy label { display: grid; gap: 6px; }
+.cycle-diplomacy input, .cycle-diplomacy select { width: 100%; }
+.cycle-diplomacy .cd-filters { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 16px; margin-bottom: 24px; }
+.cycle-diplomacy .cd-filters label > span, .cycle-diplomacy .cd-status { display: inline-flex; align-items: center; gap: 8px; }
+.cycle-diplomacy .cd-public-section, .cycle-diplomacy .cd-management { border-top: 1px solid #484848; padding: 24px 0; }
+.cycle-diplomacy .cd-relations, .cycle-diplomacy .cd-terms, .cycle-diplomacy .cd-proposals { list-style: none; padding: 0; margin: 0; }
+.cycle-diplomacy .cd-relation { padding: 16px 0; border-bottom: 1px solid #383838; }
+.cycle-diplomacy .cd-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(110px, auto) minmax(0, 1fr); gap: 20px; align-items: center; }
+.cycle-diplomacy .cd-clan { display: flex; align-items: center; gap: 12px; }
+.cycle-diplomacy .cd-clan img, .cycle-diplomacy .cd-clan > svg { width: 40px; height: 40px; object-fit: contain; flex: 0 0 40px; color: var(--gold, #cdb472); }
+.cycle-diplomacy .cd-muted, .cycle-diplomacy small { color: #b9b9b9; }
+.cycle-diplomacy .cd-terms { display: grid; gap: 10px; margin-top: 16px; }
+.cycle-diplomacy .cd-terms li { display: flex; gap: 8px 24px; flex-wrap: wrap; font-size: 14px; }
+.cycle-diplomacy fieldset { border: 0; padding: 0; margin: 0; }
+.cycle-diplomacy legend { font-weight: 600; padding: 0 0 12px; }
+.cycle-diplomacy .cd-target { max-width: 520px; }
+.cycle-diplomacy .cd-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0 24px; }
+.cycle-diplomacy .cd-war-fields { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto; align-items: end; gap: 12px; }
+.cycle-diplomacy .cd-proposals > li { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 16px 0; border-bottom: 1px solid #383838; }
+.cycle-diplomacy .cd-proposals strong { display: block; margin-bottom: 6px; }
+.cycle-diplomacy .cd-proposals p { margin: 8px 0; }
+.cycle-diplomacy .cd-error { color: #ffb4ab; }
+.cycle-diplomacy .cd-empty { padding: 16px 0 32px; }
+.cycle-diplomacy .cd-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.cd-dialog-button { color: #e5e5e5; }
+.cd-confirm .MuiDialog-paper { background: #181818; color: #e5e5e5; border: 1px solid #666; border-radius: 6px; overflow-wrap: anywhere; }
+@media (max-width: 650px) {
+  .cycle-diplomacy { width: calc(100% - 24px); padding-top: 24px; }
+  .cycle-diplomacy h1 { font-size: 24px; }
+  .cycle-diplomacy .cd-filters, .cycle-diplomacy .cd-war-fields { grid-template-columns: minmax(0, 1fr); }
+  .cycle-diplomacy .cd-pair { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .cycle-diplomacy .cd-status { padding-left: 52px; }
+  .cycle-diplomacy .cd-proposals > li { align-items: stretch; flex-direction: column; }
+  .cycle-diplomacy .cd-actions > button { flex: 1 1 200px; }
+}

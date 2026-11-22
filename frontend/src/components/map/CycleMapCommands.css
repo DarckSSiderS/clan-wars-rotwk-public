@@ -1,0 +1,25 @@
+.cycle-map-command-dialog .MuiDialog-paper { color: var(--cw-text-primary); background: var(--cw-bg-surface); border: 1px solid var(--cw-border-active); border-radius: 6px; }
+.cycle-map-command-dialog .MuiDialogTitle-root { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--cw-border-subtle); font: 600 23px/1.4 var(--cw-font-display); }
+.cycle-map-command-dialog .MuiDialogContent-root { padding: 24px; }
+.cycle-map-command-dialog button, .cycle-map-dialog-actions button { min-height: 40px; padding: 8px 14px; color: var(--cw-gold-light); background: var(--cw-bg-elevated); border: 1px solid var(--cw-border-active); border-radius: 4px; font: inherit; cursor: pointer; }
+.cycle-map-command-dialog button:disabled { opacity: .55; cursor: default; }
+.cycle-map-command-dialog .MuiIconButton-root { flex: 0 0 40px; width: 40px; padding: 8px; border: 0; }
+.cycle-map-command-dialog button.cycle-map-command-primary { color: var(--cw-bg-canvas); background: var(--cw-gold-light); font-weight: 700; }
+.cycle-map-command-dialog label { display: grid; gap: 8px; font-size: 14px; margin: 14px 0; }
+.cycle-map-command-dialog select { width: 100%; padding: 10px 12px; color: var(--cw-text-primary); background: var(--cw-bg-canvas); border: 1px solid var(--cw-border-subtle); border-radius: 4px; font: inherit; }
+.cycle-map-command-dialog h2, .cycle-map-command-dialog h3 { font-family: var(--cw-font-display); font-size: 20px; margin: 16px 0; }
+.cycle-map-command-dialog p { color: var(--cw-text-secondary); font-size: 14px; line-height: 1.6; }
+.cycle-map-orders fieldset { border: 0; padding: 0; margin: 22px 0; }
+.cycle-map-orders legend { font-weight: 600; color: var(--cw-gold-light); }
+.cycle-map-orders ul { list-style: none; padding: 0; margin: 12px 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 24px; }
+.cycle-map-orders li { min-width: 0; padding: 12px 0; border-bottom: 1px solid var(--cw-border-subtle); }
+.cycle-map-orders li label { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; cursor: pointer; }
+.cycle-map-orders li input { width: 18px; height: 18px; accent-color: var(--cw-gold); flex-shrink: 0; }
+.cycle-map-orders li svg { width: 20px; color: var(--cw-gold); flex-shrink: 0; }
+.cycle-map-orders li span { overflow-wrap: anywhere; }
+.cycle-map-orders small { color: var(--cw-text-secondary); display: block; font-size: 12px; }
+.cycle-map-command-dialog .cycle-reinforcements { width: 100%; padding: 0; margin: 0; }
+.cycle-map-command-dialog .cr-section { padding: 16px 0; }
+.cycle-map-dialog-actions { display: flex; justify-content: flex-end; padding: 16px 24px; gap: 12px; }
+.cycle-map-command-dialog :focus-visible { outline: 2px solid var(--cw-gold-light); outline-offset: 3px; }
+.cycle-map-orders ul { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }

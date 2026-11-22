@@ -1,0 +1,172 @@
+.wars-page.prototype-exact-page.MuiContainer-root {
+  width: min(1480px, calc(100% - 64px));
+  margin-inline: auto;
+  padding: 42px 0 72px !important;
+}
+
+.wars-page .wars-prototype-header {
+  min-height: 0 !important;
+  margin-bottom: 28px !important;
+  padding-bottom: 0 !important;
+  border-bottom: 0 !important;
+}
+
+.wars-page .wars-prototype-header h1 {
+  margin: 0 0 8px !important;
+  font-size: 52px !important;
+  line-height: 1.08 !important;
+  text-shadow: none !important;
+}
+
+.wars-page .wars-prototype-header__eyebrow { margin-bottom: 8px; font-size: 10px; }
+.wars-page .wars-prototype-header__subtitle { max-width: 700px; color: #b1b3aa; font-size: 15px; }
+
+.wars-page .battle-main {
+  --p-density: 1;
+  padding: calc(32px * var(--p-density));
+  text-align: center;
+}
+.wars-page .battle-main .eyebrow { margin-bottom: calc(28px * var(--p-density)); }
+.wars-page .vs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 0.42fr) minmax(0, 1fr);
+  align-items: center;
+  gap: calc(34px * var(--p-density));
+}
+.wars-page .side-score {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr);
+  align-items: center;
+  gap: calc(24px * var(--p-density));
+  text-align: left;
+}
+.wars-page .side-score--defender {
+  grid-template-columns: minmax(0, 1fr) 148px;
+  text-align: right;
+}
+.wars-page .side-score--defender .crest-big { grid-column: 2; grid-row: 1; }
+.wars-page .side-score--defender .side-score__body { grid-column: 1; grid-row: 1; }
+.wars-page .side-score h2 {
+  margin: 4px 0 12px;
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+.wars-page .side-score__role {
+  color: var(--gold);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.wars-page .side-score__points {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.wars-page .side-score--defender .side-score__points { justify-content: flex-end; }
+.wars-page .side-score__points strong {
+  color: var(--gold2);
+  font: 44px/1 var(--cw-font-display);
+}
+.wars-page .side-score__points span {
+  max-width: 90px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.wars-page .side-score__record {
+  margin-top: 14px;
+  padding-top: 13px;
+  display: flex;
+  gap: 22px;
+  border-top: 1px solid rgba(210, 190, 140, 0.14);
+}
+.wars-page .side-score--defender .side-score__record { justify-content: flex-end; }
+.wars-page .side-score__record span {
+  display: grid;
+  gap: 2px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.wars-page .side-score__record strong {
+  color: var(--text);
+  font: 18px/1 var(--cw-font-display);
+}
+.wars-page .vsmark { color: #c7b483; font: 34px var(--cw-font-display); }
+.wars-page .timer { margin-top: 16px; padding: 7px 20px; display: inline-block; border: 1px solid var(--line); font: 20px var(--cw-font-display); }
+.wars-page .warline { margin-top: 12px; color: #b86457; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; }
+.wars-page .crest-big {
+  width: 148px;
+  height: 148px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: var(--text);
+  background: radial-gradient(circle at 50% 38%, color-mix(in srgb, var(--clan-color) 30%, #161a16), #0b0e0c 72%);
+  border: 1px solid color-mix(in srgb, var(--clan-color) 66%, var(--line));
+  box-shadow: inset 0 0 34px rgba(0, 0, 0, 0.34), 0 14px 34px rgba(0, 0, 0, 0.2);
+  font: 44px var(--cw-font-display);
+}
+.wars-page .crest-big--image { padding: 13px; }
+.wars-page .crest-big--fallback {
+  clip-path: polygon(50% 0, 96% 18%, 84% 78%, 50% 100%, 16% 78%, 4% 18%);
+}
+.wars-page .crest-big img { width: 100%; height: 100%; object-fit: contain; }
+.wars-page .battle-main__center { min-width: 0; }
+.wars-page .battle-main-actions { margin: 18px 0 0; display: flex; align-items: center; justify-content: center; gap: 12px; }
+.wars-page .battle-main-actions span { color: var(--muted); font-size: 9px; }
+.wars-page .battle-progress { width: 100%; height: 4px; margin: 30px auto 14px; overflow: hidden; background: #111; }
+.wars-page .battle-progress span { display: block; width: 100%; height: 100%; }
+.wars-page .battle-meta { display: flex; justify-content: center; gap: 24px; color: var(--muted); font-size: 10px; flex-wrap: wrap; }
+.wars-page .battle-main--empty { min-height: 230px; display: grid; place-items: center; align-content: center; }
+.wars-page .wars-deployment-controls { margin-top: 20px; }
+.wars-page .wars-tabs { margin: 20px 0; }
+.wars-page .wars-tabs .tab { padding: 13px 16px; font-size: 11px; }
+.wars-page .wars-lower-grid { margin-top: 28px; }
+.wars-page .wars-lower-grid > .panel { padding: 22px; }
+.wars-page .wars-lower-grid h2 { margin: 0 0 16px; }
+.wars-page .wars-event-list { display: grid; }
+.wars-page .wars-event-list > a { padding: 12px 0; display: grid; grid-template-columns: 10px 1fr; gap: 3px 10px; color: var(--text); border-bottom: 1px solid rgba(210, 190, 140, 0.08); text-decoration: none; }
+.wars-page .wars-event-list > a:last-child { border-bottom: 0; }
+.wars-page .wars-event-list .dot { grid-row: 1 / 3; align-self: center; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+.wars-page .wars-event-list .dot.green { background: #829b6c; }
+.wars-page .wars-event-list .dot.red { background: #b85b54; }
+.wars-page .wars-event-list small { color: var(--muted); }
+.wars-page .wars-summary-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.wars-page .wars-summary-grid .kpi { min-height: 94px; padding: 16px; }
+.wars-page .wars-summary-grid .kpi strong { display: block; color: var(--gold2); font: 32px var(--cw-font-display); }
+.wars-page .wars-summary-grid .kpi small { color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+
+@media (max-width: 900px) {
+  .wars-page.prototype-exact-page.MuiContainer-root { width: min(100% - 36px, 1480px); }
+  .wars-page .battle-main { --p-density: 0.85; }
+  .wars-page .vs { grid-template-columns: 1fr; }
+  .wars-page .battle-main__center { padding: 4px 0; }
+  .wars-page .side-score { grid-template-columns: 112px minmax(0, 1fr); }
+  .wars-page .side-score--defender { grid-template-columns: minmax(0, 1fr) 112px; }
+  .wars-page .crest-big { width: 112px; height: 112px; }
+}
+
+@media (max-width: 650px) {
+  .wars-page.prototype-exact-page.MuiContainer-root { width: calc(100% - 26px); padding: 25px 0 48px !important; }
+  .wars-page .wars-prototype-header { align-items: flex-start !important; flex-direction: column; }
+  .wars-page .wars-prototype-header h1 { font-size: 38px !important; }
+  .wars-page .battle-main { --p-density: 0.7; padding-inline: 16px; }
+  .wars-page .vs { gap: 20px; }
+  .wars-page .side-score { grid-template-columns: 84px minmax(0, 1fr); gap: 16px; }
+  .wars-page .side-score--defender { grid-template-columns: minmax(0, 1fr) 84px; }
+  .wars-page .side-score h2 { font-size: 20px; }
+  .wars-page .side-score__points strong { font-size: 34px; }
+  .wars-page .side-score__record { gap: 16px; }
+  .wars-page .crest-big { width: 84px; height: 84px; }
+  .wars-page .crest-big--image { padding: 8px; }
+  .wars-page .battle-meta { gap: 8px; }
+  .wars-page .battle-main-actions { flex-direction: column; }
+  .wars-page .wars-summary-grid { grid-template-columns: 1fr; }
+}

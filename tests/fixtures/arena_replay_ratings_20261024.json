@@ -1,0 +1,167 @@
+{
+  "source": "anonymized_api_and_replay_html_fixture",
+  "samples": [
+    {
+      "url": "https://bfmeladder.com/replay/00000000-0000-4000-8000-000000000001.BfME2Replay",
+      "raw": {
+        "replayId": "00000000-0000-4000-8000-000000000001.BfME2Replay",
+        "date": 1780086400000,
+        "arenaId": "8a0e14c4-3204-4973-96e3-62ba9dc8526b",
+        "gamemode": "1 versus 1",
+        "mapId": "maps_5Cfords_20of_20isen_20unlame_5Cfords_20of_20isen_20unlame_2Emap",
+        "mapName": "Fords of Isen (Unlame)",
+        "patchId": "05a64473-c7f5-4fff-8e00-f30e06db9d96:1.9.7.7d",
+        "patchName": "Ennorath (1.9.7.7d)",
+        "gameName": "RotWK",
+        "duration": "00:18:16",
+        "likes": 0,
+        "downloads": 4,
+        "plays": 0,
+        "players": [
+          {
+            "uuid": "00000000-0000-4000-8001-000000000101",
+            "faction": "Mordor",
+            "team": 0,
+            "isWinner": true,
+            "oldRank": 34,
+            "newRank": 31
+          },
+          {
+            "uuid": "00000000-0000-4000-8001-000000000102",
+            "faction": "Rohan",
+            "team": 1,
+            "isWinner": false,
+            "oldRank": 25,
+            "newRank": 27
+          }
+        ],
+        "comments": []
+      },
+      "html": "<html><body><main><div><h1>Fords of Isen (Unlame)</h1><p>RotWK · Ennorath (1.9.7.7d) · 1 versus 1</p></div><a class=\"btn btn-primary\" href=\"/api/replays/download?replayId=00000000-0000-4000-8000-000000000001.BfME2Replay\">⬇ Download replay (.BfME2Replay)</a><div><div><span>Team 0</span> · <span>Winners</span></div><div><span><a href=\"/u/FixturePlayer\">Fixture Player</a><span>HOST</span></span><span><span>RANDOM</span><span>Mordor <span>rank 34 → 31</span> <span class=\"rx\"><button class=\"rx-btn\"><span>+9 ELO</span></button><span class=\"rx-pop\"><strong>How this was worked out</strong><ul><li>Rating before: 1079</li><li>Opponent rating: 1101.</li><li>An even match.</li><li>Win: +9.</li><li>Rating after: 1088</li></ul></span></span></span></span></div></div><div><div><span>Team 1</span> · <span>Losers</span></div><div><span><a href=\"/u/FixturePlayer\">Fixture Player</a></span><span><span>PICKED</span><span>Rohan <span>rank 25 → 27</span> <span class=\"rx\"><button class=\"rx-btn\"><span>-9 ELO</span></button><span class=\"rx-pop\"><strong>How this was worked out</strong><ul><li>Rating before: 1101</li><li>Opponent rating: 1079.</li><li>An even match.</li><li>Loss: -9.</li><li>Rating after: 1092</li></ul></span></span></span></span></div></div></main></body></html>",
+      "expected_ratings": {
+        "00000000-0000-4000-8001-000000000101": 1079,
+        "00000000-0000-4000-8001-000000000102": 1101
+      }
+    },
+    {
+      "url": "https://bfmeladder.com/replay/00000000-0000-4000-8000-000000000002.BfME2Replay",
+      "raw": {
+        "replayId": "00000000-0000-4000-8000-000000000002.BfME2Replay",
+        "date": 1780172800000,
+        "arenaId": "8a0e14c4-3204-4973-96e3-62ba9dc8526b",
+        "gamemode": "2 versus 2",
+        "mapId": "maps_5Cmap_20mp_20lithlad_5Cmap_20mp_20lithlad_2Emap",
+        "mapName": "Lithlad",
+        "patchId": "05a64473-c7f5-4fff-8e00-f30e06db9d96:1.9.7.7d",
+        "patchName": "Ennorath (1.9.7.7d)",
+        "gameName": "RotWK",
+        "duration": "00:14:18",
+        "likes": 0,
+        "downloads": 11,
+        "plays": 1,
+        "players": [
+          {
+            "uuid": "00000000-0000-4000-8001-000000000201",
+            "faction": "Rohan",
+            "team": 0,
+            "isWinner": true,
+            "oldRank": 115,
+            "newRank": 104
+          },
+          {
+            "uuid": "00000000-0000-4000-8001-000000000202",
+            "faction": "Goblins",
+            "team": 0,
+            "isWinner": true,
+            "oldRank": 2,
+            "newRank": 2
+          },
+          {
+            "uuid": "00000000-0000-4000-8001-000000000203",
+            "faction": "Harad",
+            "team": 1,
+            "isWinner": false,
+            "oldRank": 58,
+            "newRank": 105
+          },
+          {
+            "uuid": "00000000-0000-4000-8001-000000000204",
+            "faction": "Rohan",
+            "team": 1,
+            "isWinner": false,
+            "oldRank": 133,
+            "newRank": 133
+          }
+        ],
+        "comments": []
+      },
+      "html": "<html><body><main><div><h1>Lithlad</h1><p>RotWK · Ennorath (1.9.7.7d) · 2 versus 2</p></div><a class=\"btn btn-primary\" href=\"/api/replays/download?replayId=00000000-0000-4000-8000-000000000002.BfME2Replay\">⬇ Download replay (.BfME2Replay)</a><div><div><span>Team 0</span> · <span>Winners</span></div><div><span><a href=\"/u/FixturePlayer\">Fixture Player</a><span>HOST</span></span><span><span>RANDOM</span><span>Rohan <span>rank 115 → 104</span> <span class=\"rx\"><button class=\"rx-btn\"><span>+8 ELO</span></button><span class=\"rx-pop\"><strong>How this was worked out</strong><ul><li>Rating before: 980</li><li>Team average: 1001 against 974.</li><li>Favourite, so a win pays less and a loss costs more.</li><li>Win: +8.</li><li>Rating after: 988</li></ul></span></span></span></span></div><div><span><a href=\"/u/FixturePlayer\">Fixture Player</a></span><span><span>PARTIAL RANDOM</span><span>Goblins <span class=\"rx\"><button class=\"rx-btn\"><span>+8 ELO</span></button><span class=\"rx-pop\"><strong>How this was worked out</strong><ul><li>Rating before: 1022</li><li>Team average: 1001 against 974.</li><li>Favourite, so a win pays less and a loss costs more.</li><li>Win: +8.</li><li>Rating after: 1030</li></ul></span></span></span></span></div></div><div><div><span>Team 1</span> · <span>Losers</span></div><div><span><a href=\"/u/FixturePlayer\">Fixture Player</a></span><span><span>RANDOM</span><span>Harad <span>rank 58 → 105</span> <span class=\"rx\"><button class=\"rx-btn\"><span>-8 ELO</span></button><span class=\"rx-pop\"><strong>How this was worked out</strong><ul><li>Rating before: 995</li><li>Team average: 974 against 1001.</li><li>Underdog, so a win pays more and a loss costs less.</li><li>Loss: -8.</li><li>Rating after: 987</li></ul></span></span></span></span></div><div><span><a href=\"/u/FixturePlayer\">Fixture Player</a></span><span><span>RANDOM</span><span>Rohan <span class=\"rx\"><button class=\"rx-btn\"><span>-8 ELO</span></button><span class=\"rx-pop\"><strong>How this was worked out</strong><ul><li>Rating before: 953</li><li>Team average: 974 against 1001.</li><li>Underdog, so a win pays more and a loss costs less.</li><li>Loss: -8.</li><li>Rating after: 945</li></ul></span></span></span></span></div></div></main></body></html>",
+      "expected_ratings": {
+        "00000000-0000-4000-8001-000000000201": 980,
+        "00000000-0000-4000-8001-000000000202": 1022,
+        "00000000-0000-4000-8001-000000000203": 995,
+        "00000000-0000-4000-8001-000000000204": 953
+      }
+    },
+    {
+      "url": "https://bfmeladder.com/replay/00000000-0000-4000-8000-000000000003.BfME2Replay",
+      "raw": {
+        "replayId": "00000000-0000-4000-8000-000000000003.BfME2Replay",
+        "date": 1780259200000,
+        "arenaId": "2bd291d4-a624-481d-af9b-3a63ea9effa7",
+        "gamemode": "2 versus 2",
+        "mapId": "maps_5Cmap_20mp_20firien_20wood_5Cmap_20mp_20firien_20wood_2Emap",
+        "mapName": "Firien Wood",
+        "patchId": "official-2:9.8.0",
+        "patchName": "Patch 2.02 (9.8.0)",
+        "gameName": "RotWK",
+        "duration": "00:15:20",
+        "likes": 0,
+        "downloads": 6,
+        "plays": 0,
+        "players": [
+          {
+            "uuid": "00000000-0000-4000-8001-000000000301",
+            "faction": "Mordor",
+            "team": 0,
+            "isWinner": false,
+            "oldRank": 885,
+            "newRank": 892
+          },
+          {
+            "uuid": "00000000-0000-4000-8001-000000000302",
+            "faction": "Men",
+            "team": 0,
+            "isWinner": false,
+            "oldRank": 884,
+            "newRank": 891
+          },
+          {
+            "uuid": "00000000-0000-4000-8001-000000000303",
+            "faction": "Elves",
+            "team": 1,
+            "isWinner": true,
+            "oldRank": 788,
+            "newRank": 706
+          },
+          {
+            "uuid": "00000000-0000-4000-8001-000000000304",
+            "faction": "Men",
+            "team": 1,
+            "isWinner": true,
+            "oldRank": 691,
+            "newRank": 419
+          }
+        ],
+        "comments": []
+      },
+      "html": "<html><body><main><div><h1>Firien Wood</h1><p>RotWK · Patch 2.02 (9.8.0) · 2 versus 2</p></div><a class=\"btn btn-primary\" href=\"/api/replays/download?replayId=00000000-0000-4000-8000-000000000003.BfME2Replay\">⬇ Download replay (.BfME2Replay)</a><div><div><span>Team 0</span> · <span>Losers</span></div><div><span><a href=\"/u/FixturePlayer\">Fixture Player</a><span>HOST</span></span><span><span>PICKED</span><span>Mordor <span>rank 885 → 892</span> <span class=\"rx\"><button class=\"rx-btn\"><span>-7 ELO</span></button><span class=\"rx-pop\"><strong>How this was worked out</strong><ul><li>Rating before: 951</li><li>Team average: 951 against 982.</li><li>Underdog, so a win pays more and a loss costs less.</li><li>Loss: -7.</li><li>Rating after: 944</li></ul></span></span></span></span></div><div><span><a href=\"/u/FixturePlayer\">Fixture Player</a></span><span><span>PARTIAL RANDOM</span><span>Men <span>rank 884 → 891</span> <span class=\"rx\"><button class=\"rx-btn\"><span>-7 ELO</span></button><span class=\"rx-pop\"><strong>How this was worked out</strong><ul><li>Rating before: 951</li><li>Team average: 951 against 982.</li><li>Underdog, so a win pays more and a loss costs less.</li><li>Loss: -7.</li><li>Rating after: 944</li></ul></span></span></span></span></div></div><div><div><span>Team 1</span> · <span>Winners</span></div><div><span><a href=\"/u/FixturePlayer\">Fixture Player</a></span><span><span>PICKED</span><span>Elves <span>rank 788 → 706</span> <span class=\"rx\"><button class=\"rx-btn\"><span>+7 ELO</span></button><span class=\"rx-pop\"><strong>How this was worked out</strong><ul><li>Rating before: 978</li><li>Team average: 982 against 951.</li><li>Favourite, so a win pays less and a loss costs more.</li><li>Win: +7.</li><li>Rating after: 985</li></ul></span></span></span></span></div><div><span><a href=\"/u/FixturePlayer\">Fixture Player</a></span><span><span>PICKED</span><span>Men <span>rank 691 → 419</span> <span class=\"rx\"><button class=\"rx-btn\"><span>+7 ELO</span></button><span class=\"rx-pop\"><strong>How this was worked out</strong><ul><li>Rating before: 986</li><li>Team average: 982 against 951.</li><li>Favourite, so a win pays less and a loss costs more.</li><li>Win: +7.</li><li>Rating after: 993</li></ul></span></span></span></span></div></div></main></body></html>",
+      "expected_ratings": {
+        "00000000-0000-4000-8001-000000000301": 951,
+        "00000000-0000-4000-8001-000000000302": 951,
+        "00000000-0000-4000-8001-000000000303": 978,
+        "00000000-0000-4000-8001-000000000304": 986
+      }
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 20rem;
+  min-height: 100%;
+  background: var(--cw-bg-canvas);
+  scroll-behavior: smooth;
+  scrollbar-color: var(--cw-gold-dark) var(--cw-bg-canvas);
+}
+
+body {
+  min-width: 20rem;
+  min-height: 100vh;
+  margin: 0;
+  display: block;
+  color: var(--cw-text-primary);
+  background: var(--cw-bg-canvas);
+  font-family: var(--cw-font-ui);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(7, 10, 8, 0.82), rgba(7, 10, 8, 0.94)),
+    var(--page-background-image);
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 24% 8%, rgba(189, 165, 109, 0.07), transparent 30rem),
+    linear-gradient(90deg, rgba(11, 13, 12, 0.18), rgba(11, 13, 12, 0.5));
+}
+
+body.anime-background::before,
+body.presidents-background::before,
+body.anime-background::after,
+body.presidents-background::after {
+  display: none;
+}
+
+#root,
+.app-container {
+  min-height: 100vh;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  color: var(--cw-bg-canvas);
+  background: var(--cw-gold-light);
+}
+
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--cw-gold-light);
+  outline-offset: 3px;
+}
+
+h1,
+h2 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+@media (max-width: 37.5rem) {
+  input,
+  textarea,
+  select {
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

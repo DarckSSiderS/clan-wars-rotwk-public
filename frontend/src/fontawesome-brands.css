@@ -1,0 +1,23 @@
+/* Font Awesome Free 6.4.0, SIL OFL 1.1; полная лицензия рядом со шрифтом. */
+@font-face {
+  font-family: 'Font Awesome 6 Brands';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/vendor/fontawesome/fa-brands-400.woff2') format('woff2');
+}
+
+.fab {
+  display: inline-block;
+  font-family: 'Font Awesome 6 Brands';
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 1;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.fa-telegram::before { content: '\f2c6'; }
+.fa-twitch::before { content: '\f1e8'; }
+.fa-youtube::before { content: '\f167'; }

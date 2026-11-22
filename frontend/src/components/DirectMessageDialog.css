@@ -1,0 +1,116 @@
+.direct-message-dialog .MuiDialogTitle-root {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.direct-message-dialog .MuiDialogTitle-root small {
+  color: var(--cw-gold-light);
+  font: 600 12px/1 var(--cw-font-body);
+}
+
+.direct-message-dialog__content.MuiDialogContent-root {
+  display: grid;
+  gap: 14px;
+}
+
+.direct-message-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-height: 260px;
+  max-height: 46vh;
+  padding: 12px;
+  overflow-y: auto;
+  background: rgba(8, 10, 9, 0.68);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.direct-message {
+  display: flex;
+  align-items: end;
+  gap: 8px;
+  max-width: 88%;
+}
+
+.direct-message.is-outgoing {
+  align-self: flex-end;
+}
+
+.direct-message.is-incoming {
+  align-self: flex-start;
+}
+
+.direct-message > div:first-child {
+  padding: 9px 11px;
+  background: var(--cw-surface-2);
+  border: 1px solid var(--line);
+  border-radius: 8px 8px 8px 2px;
+}
+
+.direct-message.is-outgoing > div:first-child {
+  background: rgba(189, 165, 109, 0.11);
+  border-color: rgba(189, 165, 109, 0.28);
+  border-radius: 8px 8px 2px 8px;
+}
+
+.direct-message p {
+  margin: 0;
+  color: var(--cw-text-primary);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.direct-message time {
+  display: block;
+  margin-top: 4px;
+  color: var(--cw-text-muted);
+  font-size: 9px;
+}
+
+.direct-message > button {
+  padding: 2px;
+  color: var(--cw-text-muted);
+  background: none;
+  border: 0;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.direct-message-report {
+  display: flex;
+  flex: 1 0 100%;
+  gap: 6px;
+  width: 100%;
+}
+
+.direct-message-thread__empty {
+  display: grid;
+  flex: 1;
+  min-height: 220px;
+  place-items: center;
+  color: var(--cw-text-muted);
+}
+
+.direct-message-compose {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 10px;
+}
+
+.direct-message-dialog__actions {
+  justify-content: space-between !important;
+}
+
+@media (max-width: 650px) {
+  .direct-message {
+    max-width: 96%;
+  }
+
+  .direct-message-compose {
+    grid-template-columns: 1fr;
+  }
+}

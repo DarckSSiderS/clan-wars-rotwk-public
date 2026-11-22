@@ -1,0 +1,88 @@
+.cycle-interception .cycle-heading-identity { flex: 1; }
+.cycle-interception .ci-navigation { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 20px 0 28px; }
+.cycle-interception .ci-navigation a { display: inline-flex; align-items: center; gap: 8px; min-height: 34px; color: var(--cw-gold-light); text-decoration: none; }
+.cycle-interception .ci-navigation a:hover { color: var(--cw-text-primary); }
+.cycle-interception .ci-navigation svg { width: 17px; height: 17px; flex-shrink: 0; }
+.cycle-interception .ci-territory-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; margin-bottom: 18px; }
+.cycle-interception .ci-territory-heading h2 { margin: 0; font-size: 26px; }
+.cycle-interception .ci-phase { margin: 0; }
+.cycle-interception .ci-result { margin: 0; padding: 18px 0; border-block: 1px solid var(--cw-border-subtle); color: var(--cw-text-primary); font-size: 14px; line-height: 1.7; }
+.cycle-interception .ci-result strong, .cycle-interception .ci-original strong { display: inline; font-weight: 600; }
+.cycle-interception .ci-result-blocked { color: color-mix(in srgb, var(--cw-war) 55%, var(--cw-text-primary)); }
+.cycle-interception .ci-result-exhausted { color: color-mix(in srgb, var(--cw-success) 55%, var(--cw-text-primary)); }
+.cycle-interception h2.ci-section-title { margin: 30px 0 20px; }
+.cycle-interception .ci-sides { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 18px; list-style: none; padding: 0; margin: 0 0 32px; }
+.cycle-interception .ci-sides > li { min-width: 0; padding: 24px; border: 1px solid var(--cw-border-subtle); border-radius: 6px; background: var(--cw-surface-glass); }
+.cycle-interception .ci-side-heading { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; align-items: center; }
+.cycle-interception .ci-side-heading > svg { color: var(--cw-gold); width: 36px; height: 40px; }
+.cycle-interception .ci-side-heading h3 { margin: 0; font-size: 21px; line-height: 1.3; }
+.cycle-interception .ci-side-heading small { margin-top: 5px; font-size: 12px; }
+.cycle-interception .ci-members { list-style: none; padding: 0; margin: 12px 0 0; }
+.cycle-interception .ci-members > li { padding-top: 16px; border-top: 1px solid var(--cw-border-subtle); }
+.cycle-interception .ci-members strong { font-size: 15px; font-weight: 600; }
+.cycle-interception .ci-members dl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 12px 0 16px; font-size: 11px; }
+.cycle-interception .ci-members dd { color: var(--cw-text-primary); font-size: 15px; }
+.cycle-interception .ci-side-score { grid-column: 1 / -1; margin: 10px 0 6px; color: var(--cw-gold-light); font: 600 36px/1.2 var(--cw-font-display); overflow-wrap: anywhere; }
+.cycle-interception .ci-side-score.cycle-negative { color: color-mix(in srgb, var(--cw-war) 55%, var(--cw-text-primary)); }
+.cycle-interception .ci-no-matches { padding: 24px 0; color: var(--cw-text-secondary); font-size: 14px; }
+.cycle-interception .cycle-match > summary { grid-template-columns: minmax(0, 1fr) auto 18px; gap: 16px; }
+.cycle-interception .ci-match-title { font-size: 14px; font-weight: 600; }
+.cycle-interception .cycle-contribution-heading > h3 { margin: 0; font: 600 20px/1.3 var(--cw-font-body); }
+.cycle-interception .cycle-contribution-score { flex: 0 1 auto; max-width: 50%; }
+.cycle-interception .cycle-contribution-score strong { overflow-wrap: anywhere; }
+.cycle-interception .ci-original { margin: 14px 0 0; color: var(--cw-text-secondary); font-size: 12px; line-height: 1.7; }
+.cycle-interception .ci-admin { margin-top: 32px; border-top: 1px solid var(--cw-border-subtle); }
+.cycle-interception .ci-review-form { padding: 20px 0; }
+.cycle-interception .ci-review-form fieldset,
+.cycle-interception .ci-outcome-review fieldset { min-width: 0; border: 0; padding: 0; margin: 0; display: grid; gap: 16px; }
+.cycle-interception .ci-review-form legend { color: var(--cw-gold-light); font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+.cycle-interception .ci-admin h2 { font-size: 22px; margin-bottom: 16px; }
+.cycle-interception .ci-review-form label,
+.cycle-interception .ci-outcome-review label { display: grid; gap: 8px; font-size: 13px; }
+.cycle-interception .ci-review-form input:not([type=checkbox]),
+.cycle-interception .ci-review-form select,
+.cycle-interception .ci-review-form textarea,
+.cycle-interception .ci-outcome-review textarea { width: 100%; min-width: 0; box-sizing: border-box; padding: 10px 12px; border: 1px solid var(--cw-border-subtle); border-radius: 4px; background: var(--cw-bg-surface); color: var(--cw-text-primary); font: inherit; }
+.cycle-interception .ci-review-form textarea,
+.cycle-interception .ci-outcome-review textarea { min-height: 88px; resize: vertical; }
+.cycle-interception .ci-adjust-inputs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.cycle-interception label.ci-check { display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+.cycle-interception .ci-check input { flex: 0 0 18px; width: 18px; height: 18px; margin-top: 2px; accent-color: var(--cw-gold); }
+.cycle-interception .ci-outcome-review { border-top: 1px solid var(--cw-border-subtle); padding: 20px 0 24px; }
+.cycle-interception .ci-outcome-preview { margin-top: 20px; display: grid; gap: 16px; }
+.cycle-interception .ci-outcome-preview h3 { font-size: 18px; margin: 0; }
+.cycle-interception .ci-outcome-preview p { margin: 0; }
+.cycle-interception .ci-preview-scores { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr)); gap: 12px; margin: 0; }
+.cycle-interception .ci-preview-scores dd { margin: 6px 0 0; color: var(--cw-gold-light); font: 600 23px/1.3 var(--cw-font-display); }
+.cycle-interception .ci-contribution-review { margin-top: 16px; }
+.cycle-interception .ci-contribution-review summary { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.cycle-interception .ci-contribution-review svg { width: 18px; height: 18px; }
+.cycle-interception .ci-audit { padding-top: 20px; border-top: 1px solid var(--cw-border-subtle); font-size: 13px; }
+.cycle-interception .ci-audit ol { padding-left: 24px; }
+.cycle-interception .ci-audit li { padding: 16px 0; border-bottom: 1px solid var(--cw-border-subtle); overflow-wrap: anywhere; }
+.cycle-interception .ci-audit time { display: block; color: var(--cw-text-secondary); margin-top: 8px; }
+.cycle-interception .ci-audit p { margin: 8px 0; }
+.cycle-interception .ci-adjustments { margin-top: 28px; }
+.cycle-interception .ci-adjustments ul { list-style: none; padding: 0; }
+.cycle-interception .ci-adjustments li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 16px; padding: 16px 0; border-bottom: 1px solid var(--cw-border-subtle); font-size: 13px; }
+.cycle-interception .ci-adjustments b { color: var(--cw-gold-light); }
+.cycle-interception .ci-adjustments p,
+.cycle-interception .ci-adjustments time { grid-column: 1 / -1; margin: 0; overflow-wrap: anywhere; color: var(--cw-text-secondary); }
+.cycle-interception .ci-review-form button,
+.cycle-interception .ci-outcome-review button { width: fit-content; max-width: 100%; min-height: 44px; white-space: normal; text-align: left; color: var(--cw-gold-light); }
+.cycle-interception :focus-visible { outline: 2px solid var(--cw-gold-light); outline-offset: 3px; }
+@media (max-width: 600px) {
+  .cycle-interception .ci-navigation { gap: 8px 18px; margin: 16px 0 24px; }
+  .cycle-interception .ci-territory-heading h2 { font-size: 23px; }
+  .cycle-interception .ci-result { font-size: 13px; }
+  .cycle-interception .ci-sides { gap: 14px; }
+  .cycle-interception .ci-sides > li { padding: 20px; }
+  .cycle-interception .ci-side-heading { grid-template-columns: 36px minmax(0, 1fr); }
+  .cycle-interception .ci-side-heading > svg { width: 32px; height: 36px; }
+  .cycle-interception .ci-side-heading h3 { font-size: 20px; }
+  .cycle-interception .ci-side-score { font-size: 32px; }
+  .cycle-interception .cycle-match > summary { grid-template-columns: minmax(0, 1fr) 18px; gap: 10px; }
+  .cycle-interception .cycle-match > summary > .cycle-badge { grid-column: 1; grid-row: 2; }
+  .cycle-interception .cycle-match > summary > .cycle-disclosure-icon { grid-column: 2; grid-row: 1 / 3; }
+  .cycle-interception .ci-adjust-inputs { grid-template-columns: minmax(0, 1fr); }
+}

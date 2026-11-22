@@ -1,0 +1,79 @@
+.campaign-filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.campaign-filters--single { grid-template-columns: minmax(210px, 1fr); }
+.campaign-filters label { display: grid; gap: 4px; color: rgba(255, 255, 255, 0.48); font-size: 0.68rem; font-weight: 800; text-transform: uppercase; }
+.campaign-filters select { min-height: 38px; padding: 0 10px; border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 4px; outline: 0; background: #1b1b1d; color: #f5f5f5; font-size: 0.8rem; }
+.campaign-filters select:focus { border-color: rgba(255, 84, 84, 0.72); }
+
+.campaign-history-grid { grid-template-columns: minmax(320px, 0.78fr) minmax(460px, 1.22fr); }
+.campaign-clan-ranking { padding: 7px 14px 14px; }
+.campaign-clan-row { display: grid; width: 100%; grid-template-columns: 30px 34px minmax(0, 1fr) auto; align-items: center; min-height: 53px; gap: 10px; padding: 5px 8px; border: 0; border-bottom: 1px solid rgba(255, 255, 255, 0.075); background: transparent; color: rgba(255, 255, 255, 0.76); text-align: left; cursor: pointer; }
+.campaign-clan-row:hover, .campaign-clan-row.is-selected { background: rgba(255, 255, 255, 0.035); }
+.campaign-clan-row.is-selected { box-shadow: inset 3px 0 0 #ff5757; }
+.campaign-rank { color: rgba(255, 255, 255, 0.35); font-weight: 800; text-align: center; }
+.campaign-clan-mark, .campaign-table-clan > span { display: grid; width: 32px; height: 32px; overflow: hidden; place-items: center; border: 2px solid var(--clan-color); border-radius: 50%; background: #171719; color: white; font-weight: 800; }
+.campaign-clan-mark img, .campaign-table-clan img { width: 100%; height: 100%; object-fit: cover; }
+.campaign-clan-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 700; }
+.campaign-clan-row strong { color: #ff7272; }
+
+.influence-timeline { position: relative; max-height: 620px; overflow-y: auto; padding: 12px 18px 18px; }
+.influence-timeline::before { position: absolute; top: 22px; bottom: 24px; left: 35px; width: 1px; background: rgba(255, 255, 255, 0.12); content: ''; }
+.influence-event { position: relative; z-index: 1; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; padding: 9px 0; }
+.influence-event__icon { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 50%; background: #1b1b1d; }
+.influence-event__icon svg { font-size: 18px; }
+.influence-event.is-positive .influence-event__icon, .influence-event.is-positive .influence-event__heading strong { color: #58c888; }
+.influence-event.is-negative .influence-event__icon, .influence-event.is-negative .influence-event__heading strong { color: #ff6666; }
+.influence-event__body { min-width: 0; padding: 1px 0 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
+.influence-event__heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.influence-event__heading a { overflow: hidden; color: #f0f0f2; font-weight: 750; text-decoration: none; text-overflow: ellipsis; white-space: nowrap; }
+.influence-event__body > span, .influence-event__body small { display: block; margin-top: 3px; color: rgba(255, 255, 255, 0.52); font-size: 0.76rem; }
+.influence-event__body small { color: rgba(255, 255, 255, 0.34); }
+
+.campaign-season-empty { display: grid; min-height: 360px; place-items: center; align-content: center; padding: 40px; text-align: center; }
+.campaign-season-empty > svg { color: #856c41; font-size: 58px; }
+.campaign-season-empty h2 { margin: 14px 0 6px; font-size: 1.35rem; }
+.campaign-season-empty p { max-width: 540px; margin: 0; color: rgba(255, 255, 255, 0.5); }
+.campaign-season-banner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 142px; margin-bottom: 18px; padding: 22px; border: 1px solid rgba(255, 255, 255, 0.12); border-left: 4px solid #c99a40; border-radius: 8px; background: linear-gradient(100deg, rgba(54, 39, 25, 0.96), rgba(19, 19, 20, 0.96) 60%); }
+.campaign-season-banner h2 { margin: 8px 0 5px; font-size: 1.7rem; }
+.campaign-season-banner p { display: flex; align-items: center; gap: 7px; margin: 0; color: rgba(255, 255, 255, 0.5); }
+.campaign-season-banner p svg { font-size: 17px; }
+.campaign-season-rules-link { width: fit-content; min-height: 2.2rem; margin-top: 12px; padding: 7px 10px; display: inline-flex; align-items: center; color: #f3d58f; border: 1px solid rgba(243, 213, 143, .28); border-radius: var(--cw-radius-sm); background: rgba(243, 213, 143, .07); font-size: .72rem; font-weight: 800; text-decoration: none; }
+.campaign-season-rules-link:hover { border-color: rgba(243, 213, 143, .5); background: rgba(243, 213, 143, .13); }
+.campaign-season-status { display: inline-block; padding: 4px 7px; border: 1px solid rgba(255, 255, 255, 0.16); color: #d9c39d; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; }
+.campaign-season-status--active { border-color: rgba(73, 193, 126, 0.4); color: #63d394; }
+.campaign-season-winner { min-width: 260px; padding-left: 22px; border-left: 1px solid rgba(255, 255, 255, 0.13); }
+.campaign-season-winner > span, .campaign-season-winner > b { display: block; color: rgba(255, 255, 255, 0.45); font-size: 0.7rem; text-transform: uppercase; }
+.campaign-season-winner a { display: flex; align-items: center; gap: 9px; margin: 6px 0; color: #f3d58f; text-decoration: none; }
+.campaign-season-winner img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; }
+.campaign-season-winner > b { color: #f3d58f; }
+
+.campaign-season-table-wrap { overflow-x: auto; }
+.campaign-season-table { width: 100%; min-width: 980px; border-collapse: collapse; table-layout: fixed; }
+.campaign-season-table th, .campaign-season-table td { height: 54px; padding: 0 13px; border-bottom: 1px solid rgba(255, 255, 255, 0.075); text-align: left; }
+.campaign-season-table th { background: rgba(255, 255, 255, 0.025); color: rgba(255, 255, 255, 0.43); font-size: 0.69rem; text-transform: uppercase; }
+.campaign-season-table td { color: rgba(255, 255, 255, 0.7); font-size: 0.8rem; }
+.campaign-season-table th:nth-child(1) { width: 70px; }
+.campaign-season-table th:nth-child(2) { width: 240px; }
+.campaign-season-table th:last-child { width: 210px; }
+.campaign-season-table tr.is-podium { background: rgba(190, 142, 50, 0.035); }
+.campaign-season-table tr.is-podium-1 { box-shadow: inset 3px 0 0 #d6aa47; }
+.campaign-table-rank { color: rgba(255, 255, 255, 0.45); font-weight: 900; }
+.is-podium-1 .campaign-table-rank { color: #f0c45f; }
+.campaign-table-clan { display: flex; min-width: 0; align-items: center; gap: 10px; color: #f2f2f3; font-weight: 750; text-decoration: none; }
+.campaign-table-clan > span { flex: 0 0 32px; }
+.campaign-resource-total { color: rgba(255, 255, 255, 0.48); white-space: nowrap; }
+
+@media (max-width: 900px) {
+  .campaign-history-grid { grid-template-columns: 1fr; }
+  .campaign-season-banner { align-items: flex-start; flex-direction: column; }
+  .campaign-season-winner { width: 100%; padding: 16px 0 0; border-top: 1px solid rgba(255, 255, 255, 0.13); border-left: 0; }
+}
+
+@media (max-width: 620px) {
+  .campaign-filters { width: 100%; grid-template-columns: 1fr; }
+  .campaign-season-banner { padding: 18px; }
+}

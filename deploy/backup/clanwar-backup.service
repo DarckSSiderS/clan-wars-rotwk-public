@@ -1,0 +1,15 @@
+[Unit]
+Description=ClanWar PostgreSQL and file backup
+After=postgresql.service
+
+[Service]
+Type=oneshot
+User=darcks
+Group=darcks
+EnvironmentFile=/home/clanwar/apps/clanwar/shared/backup.env
+ExecStart=/usr/bin/bash /home/clanwar/apps/clanwar/current/deploy/backup/backup.sh
+PrivateTmp=true
+ProtectHome=read-only
+ProtectSystem=strict
+ReadWritePaths=/home/clanwar/backups/clanwar
+NoNewPrivileges=true

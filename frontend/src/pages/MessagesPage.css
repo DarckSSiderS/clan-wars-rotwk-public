@@ -1,0 +1,166 @@
+.messages-page {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.messages-page__header .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.messages-page__header .btn svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.messages-inbox {
+  min-height: 28rem;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(22, 26, 23, 0.94), rgba(12, 15, 13, 0.94));
+}
+
+.messages-inbox__heading {
+  min-height: 3.5rem;
+  padding: 0.85rem 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--cw-gold);
+  border-bottom: 1px solid var(--cw-border-subtle);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.messages-inbox__heading b {
+  color: var(--cw-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.messages-inbox__row {
+  width: 100%;
+  min-height: 5.5rem;
+  padding: 0.85rem 1.1rem;
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.9rem;
+  color: var(--cw-text-primary);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(210, 190, 140, 0.09);
+  text-align: left;
+  cursor: pointer;
+}
+
+.messages-inbox__row:hover,
+.messages-inbox__row.is-unread {
+  background: linear-gradient(90deg, rgba(189, 165, 109, 0.09), rgba(189, 165, 109, 0.015));
+}
+
+.messages-inbox__row.is-unread {
+  box-shadow: inset 3px 0 0 var(--cw-gold);
+}
+
+.messages-inbox__avatar {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: var(--cw-gold-light);
+  background: #181c18;
+  border: 1px solid rgba(189, 165, 109, 0.28);
+  border-radius: 50%;
+  font-family: var(--cw-font-display);
+}
+
+.messages-inbox__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.messages-inbox__copy {
+  min-width: 0;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.messages-inbox__copy strong,
+.messages-inbox__copy span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.messages-inbox__copy span,
+.messages-inbox__meta time,
+.messages-inbox__state span {
+  color: var(--cw-text-muted);
+  font-size: 0.76rem;
+}
+
+.messages-inbox__meta {
+  display: grid;
+  justify-items: end;
+  gap: 0.5rem;
+}
+
+.messages-inbox__meta b {
+  min-width: 1.45rem;
+  height: 1.45rem;
+  padding-inline: 0.35rem;
+  display: grid;
+  place-items: center;
+  color: #11130f;
+  background: var(--cw-gold-light);
+  border-radius: 99rem;
+  font-size: 0.68rem;
+}
+
+.messages-inbox__state {
+  min-height: 22rem;
+  padding: 2rem;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.65rem;
+  color: var(--cw-text-secondary);
+  text-align: center;
+}
+
+.messages-inbox__state > svg {
+  color: var(--cw-gold);
+  font-size: 2.25rem;
+}
+
+.messages-inbox__state .btn {
+  margin-top: 0.4rem;
+  text-decoration: none;
+}
+
+.messages-inbox__state.is-error {
+  color: #e5bbb4;
+}
+
+@media (max-width: 42rem) {
+  .messages-inbox__row {
+    grid-template-columns: 2.6rem minmax(0, 1fr);
+    padding-inline: 0.8rem;
+  }
+
+  .messages-inbox__avatar {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+
+  .messages-inbox__meta {
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    justify-content: space-between;
+  }
+}

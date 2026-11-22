@@ -1,0 +1,28 @@
+.rules-context-link {
+  width: fit-content;
+  min-height: 2.35rem;
+  margin-top: 0.75rem;
+  padding: 0.48rem 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  color: var(--cw-gold-light);
+  border: 1px solid rgba(189, 165, 109, 0.28);
+  border-radius: var(--cw-radius-sm);
+  background: rgba(189, 165, 109, 0.07);
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.rules-context-link:hover {
+  color: var(--cw-text-primary);
+  border-color: rgba(189, 165, 109, 0.5);
+  background: rgba(189, 165, 109, 0.13);
+}
+
+.rules-context-link:focus-visible {
+  outline: 2px solid var(--cw-gold-light);
+  outline-offset: 2px;
+}

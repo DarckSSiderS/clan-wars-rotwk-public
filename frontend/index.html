@@ -1,0 +1,2327 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/brand/favicon-64.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="BFME ClanWars — клановая кампания за территории Средиземья" />
+    <link rel="preload" as="image" type="image/jpeg" href="/cosmetics/steam-profile-background-poster.jpg" />
+    <title>BFME ClanWars — Война за Средиземье</title>
+    
+    <!-- Bootstrap CSS собирается локально через Vite, без зависимости от CDN. -->
+    <link href="/src/vendor.css" rel="stylesheet">
+    
+    <!-- Custom CSS Variables -->
+    <style>
+      :root {
+        --primary-color: #FF4848;
+        --primary-soft-color: #FF6B6B;
+        --primary-hover-color: #e63939;
+        --primary-hover-soft-color: #ff5252;
+        --primary-rgb: 255, 72, 72;
+        --secondary-color: #ffffff;
+        --accent-color: #adadad;
+        --dark-bg: #131515;
+        --darker-bg: #0f1111;
+        --card-bg: #1a1c1c;
+        --card-bg-rgb: 26, 28, 28;
+        --card-border: #333;
+        --text-primary: #ffffff;
+        --text-secondary: #adadad;
+        --text-muted: #929292;
+        --text-dark: #6D6D6D;
+        --success-color: #4CAF50;
+        --warning-color: #FFC107;
+        --danger-color: #FF4848;
+        --live-color: #FF4848;
+        --gradient-primary: linear-gradient(135deg, #FF4848, #FF6B6B);
+        --page-overlay: rgba(8, 7, 7, 0.45);
+        --page-background-image: url(/backgrounds/middle-earth-clanwar.webp);
+        --page-background-blend: multiply;
+        --ambient-background:
+          radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+      }
+      
+      body {
+        background: var(--dark-bg);
+        color: var(--text-primary);
+        position: relative;
+      }
+      
+      body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--ambient-background);
+        z-index: -2;
+      }
+      
+      /* Убираем градиентный фон когда применяется анимированный фон */
+      body.anime-background::after {
+        display: none !important;
+      }
+      
+      body.presidents-background::after {
+        display: none !important;
+      }
+      
+      /* Исправление проблемы с перекрытием выпадающих меню */
+      .container-fluid {
+        position: relative;
+        z-index: 1;
+      }
+      
+      /* Обеспечиваем, что выпадающие меню отображаются поверх всего */
+      [style*="z-index: 9999"] {
+        position: relative !important;
+        z-index: 9999 !important;
+      }
+      
+      /* Навигационная панель должна иметь высокий z-index */
+      .MuiAppBar-root {
+        z-index: 9998 !important;
+      }
+      
+      /* Выпадающие меню в навигации */
+      .MuiAppBar-root [style*="z-index: 9999"] {
+        z-index: 9999 !important;
+        position: absolute !important;
+      }
+
+      .text-gradient {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .glow {
+        box-shadow: 0 0 30px rgba(var(--primary-rgb), 0.22);
+        transition: all 0.3s ease;
+        background: rgba(var(--card-bg-rgb), 0.9) !important;
+        border: 1px solid var(--card-border) !important;
+        border-radius: 15px;
+        backdrop-filter: blur(15px);
+        color: var(--text-primary) !important;
+      }
+      
+      .glow .card-body {
+        background: rgba(var(--card-bg-rgb), 0.9) !important;
+        color: var(--text-primary) !important;
+      }
+
+      .glow:hover {
+        box-shadow: 0 0 50px rgba(var(--primary-rgb), 0.36);
+      }
+
+      .pulse {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+
+      .rank-badge {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 0.9rem;
+        box-shadow: 0 0 10px rgba(255, 72, 72, 0.3);
+      }
+
+      .spinner-border {
+        width: 3rem;
+        height: 3rem;
+      }
+
+      /* Стили для таблицы матчей */
+      .table-row-hover {
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .table-row-hover:hover {
+        background-color: rgba(255, 72, 72, 0.1) !important;
+        transform: scale(1.01);
+        box-shadow: 0 4px 8px rgba(255, 72, 72, 0.2);
+      }
+
+      .table-hover tbody tr:hover {
+        background-color: rgba(255, 72, 72, 0.1) !important;
+      }
+
+      /* Стили для чекбоксов в выпадающем меню */
+      .MuiCheckbox-root {
+        color: rgba(255, 255, 255, 0.5) !important;
+      }
+
+      .MuiCheckbox-root.Mui-checked {
+        color: rgba(255, 72, 72, 0.8) !important;
+      }
+
+      /* Стили для чипов выбранных фракций */
+      .MuiChip-root {
+        background-color: rgba(255, 72, 72, 0.2) !important;
+        color: white !important;
+        border: 1px solid rgba(255, 72, 72, 0.3) !important;
+      }
+
+      .MuiChip-root:hover {
+        background-color: rgba(255, 72, 72, 0.3) !important;
+      }
+
+      .MuiChip-deleteIcon {
+        color: rgba(255, 255, 255, 0.7) !important;
+      }
+
+      .MuiChip-deleteIcon:hover {
+        color: rgba(255, 72, 72, 0.8) !important;
+      }
+      
+      .pulse img {
+        animation: pulse 2s infinite;
+      }
+      
+             /* Стили для иконок в навигации */
+       .MuiTypography-root img {
+         filter: drop-shadow(0 0 5px rgba(255, 72, 72, 0.3));
+         transition: all 0.3s ease;
+       }
+       
+       .MuiTypography-root img:hover {
+         filter: drop-shadow(0 0 10px rgba(255, 72, 72, 0.6));
+         transform: scale(1.1);
+       }
+       
+       /* Стили для страницы профиля */
+       .profile-avatar {
+         transition: all 0.3s ease;
+       }
+       
+       .profile-avatar:hover {
+         transform: scale(1.1);
+       }
+       
+       .user-info {
+         display: flex;
+         flex-direction: column;
+         gap: 1rem;
+       }
+       
+       .info-item {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 0.75rem;
+         background: rgba(0, 212, 255, 0.05);
+         border-radius: 8px;
+         border-left: 3px solid var(--primary-color);
+       }
+       
+       .info-label {
+         font-weight: 600;
+         color: var(--text-secondary);
+         text-transform: uppercase;
+         letter-spacing: 0.5px;
+         font-size: 0.9rem;
+       }
+       
+       .info-value {
+         color: var(--text-primary);
+         font-weight: 500;
+       }
+       
+       .clan-info-item {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 1rem;
+         background: rgba(102, 126, 234, 0.05);
+         border-radius: 8px;
+         margin-bottom: 1rem;
+         border-left: 3px solid var(--accent-color);
+       }
+       
+       .clan-name {
+         font-size: 1.2rem;
+         font-weight: 700;
+         color: var(--primary-color);
+         font-family: 'Orbitron', monospace;
+       }
+       
+       .clan-description {
+         color: var(--text-secondary);
+         font-size: 0.9rem;
+         margin-top: 0.5rem;
+       }
+       
+       .invite-card {
+         background: rgba(240, 147, 251, 0.05);
+         border: 1px solid var(--card-border);
+         border-radius: 10px;
+         padding: 1.5rem;
+         margin-bottom: 1rem;
+         transition: all 0.3s ease;
+         border-left: 4px solid var(--secondary-color);
+       }
+       
+       .invite-card:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+       }
+       
+       .invite-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-bottom: 1rem;
+       }
+       
+       .invite-clan-name {
+         font-size: 1.1rem;
+         font-weight: 700;
+         color: var(--primary-color);
+       }
+       
+       .invite-inviter {
+         color: var(--text-secondary);
+         font-size: 0.9rem;
+       }
+       
+       /* Enhanced Profile Styles */
+       .profile-header-card {
+         background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(40, 40, 40, 0.9) 100%);
+         border: 1px solid rgba(255, 72, 72, 0.3);
+         box-shadow: 0 8px 32px rgba(255, 72, 72, 0.2);
+       }
+       
+       .profile-username {
+         font-size: 2.5rem;
+         font-weight: 700;
+         background: linear-gradient(45deg, #FF4848, #FF6B6B);
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+         background-clip: text;
+         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+       }
+       
+       .profile-email {
+         font-size: 1.1rem;
+         color: #adadad;
+         font-weight: 400;
+       }
+       
+       /* Level and Experience Styles */
+       .level-info {
+         margin-top: 2rem;
+       }
+       
+       .level-badge {
+         display: inline-flex;
+         flex-direction: column;
+         align-items: center;
+         background: linear-gradient(135deg, #FF4848, #FF6B6B);
+         color: white;
+         padding: 1rem 1.5rem;
+         border-radius: 15px;
+         box-shadow: 0 4px 15px rgba(255, 72, 72, 0.3);
+         margin-bottom: 1rem;
+       }
+       
+       .level-number {
+         font-size: 2rem;
+         font-weight: 700;
+         line-height: 1;
+       }
+       
+       .level-label {
+         font-size: 0.8rem;
+         opacity: 0.9;
+         margin-top: 0.25rem;
+       }
+       
+       .experience-bar-container {
+         max-width: 400px;
+         margin: 0 auto;
+       }
+       
+       .experience-bar .progress {
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: 10px;
+         overflow: hidden;
+         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+       }
+       
+       .experience-bar .progress-bar {
+         background: linear-gradient(90deg, #FF4848 0%, #FF6B6B 100%);
+         border-radius: 10px;
+         box-shadow: 0 0 10px rgba(255, 72, 72, 0.5);
+         transition: width 0.8s ease;
+       }
+       
+       .experience-text {
+         text-align: center;
+         color: #adadad;
+         font-size: 0.9rem;
+       }
+       
+       /* Profile Info Cards */
+       .profile-info-card {
+         background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(40, 40, 40, 0.9) 100%);
+         border: 1px solid rgba(255, 72, 72, 0.2);
+         transition: all 0.3s ease;
+       }
+       
+       .profile-info-card:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 8px 25px rgba(255, 72, 72, 0.15);
+       }
+       
+       .profile-info-card .card-header {
+         background: linear-gradient(135deg, rgba(255, 72, 72, 0.1) 0%, rgba(255, 107, 107, 0.1) 100%);
+         border-bottom: 1px solid rgba(255, 72, 72, 0.2);
+       }
+       
+       /* Tab styles */
+       .nav-tabs {
+         border-bottom: 2px solid #dc3545;
+         margin-bottom: 2rem;
+       }
+       
+       .nav-tabs .nav-link {
+         color: #ffffff;
+         background: transparent;
+         border: none;
+         border-bottom: 3px solid transparent;
+         padding: 0.75rem 1.5rem;
+         font-weight: 600;
+         transition: all 0.3s ease;
+       }
+       
+       .nav-tabs .nav-link:hover {
+         color: #dc3545;
+         background: rgba(220, 53, 69, 0.1);
+         border-color: transparent;
+       }
+       
+       .nav-tabs .nav-link.active {
+         color: #dc3545;
+         background: rgba(220, 53, 69, 0.1);
+         border-bottom-color: #dc3545;
+       }
+       
+       .tab-content {
+         background: rgba(26, 26, 26, 0.8);
+         border-radius: 10px;
+         padding: 2rem;
+         backdrop-filter: blur(10px);
+       }
+       
+       /* Statistics styles */
+       .statistics-card {
+         background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(40, 40, 40, 0.9) 100%);
+         border: 1px solid rgba(255, 72, 72, 0.2);
+         border-radius: 15px;
+         padding: 1.5rem;
+         margin-bottom: 1rem;
+         transition: all 0.3s ease;
+       }
+       
+       .statistics-card:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 8px 25px rgba(255, 72, 72, 0.15);
+       }
+       
+       .stat-value {
+         font-size: 2rem;
+         font-weight: 700;
+         color: #FF4848;
+         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+       }
+       
+       .stat-label {
+         color: #adadad;
+         font-size: 0.9rem;
+         margin-top: 0.5rem;
+       }
+       
+       /* Button styles */
+       .btn-success {
+         background: linear-gradient(135deg, #28a745, #20c997);
+         border: none;
+         color: white;
+         font-weight: 600;
+         padding: 0.5rem 1rem;
+         border-radius: 8px;
+         transition: all 0.3s ease;
+       }
+       
+       .btn-success:hover {
+         background: linear-gradient(135deg, #218838, #1ea085);
+         transform: translateY(-1px);
+         box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+       }
+       
+       .btn-danger {
+         background: linear-gradient(135deg, #dc3545, #c82333);
+         border: none;
+         color: white;
+         font-weight: 600;
+         padding: 0.5rem 1rem;
+         border-radius: 8px;
+         transition: all 0.3s ease;
+       }
+       
+       .btn-danger:hover {
+         background: linear-gradient(135deg, #c82333, #a71e2a);
+         transform: translateY(-1px);
+         box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+       }
+       
+       .btn-warning {
+         background: linear-gradient(135deg, #ffc107, #e0a800);
+         border: none;
+         color: #212529;
+         font-weight: 600;
+         padding: 0.5rem 1rem;
+         border-radius: 8px;
+         transition: all 0.3s ease;
+       }
+       
+       .btn-warning:hover {
+         background: linear-gradient(135deg, #e0a800, #d39e00);
+         transform: translateY(-1px);
+         box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+       }
+       
+       /* Avatar frame styles */
+       .avatar-frame-gold {
+         border: 3px solid #FFD700;
+         box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+       }
+       
+       .avatar-frame-crystal {
+         border: 3px solid #00FFFF;
+         box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+         animation: crystalGlow 2s ease-in-out infinite alternate;
+       }
+       
+       .avatar-frame-legendary {
+         border: 3px solid #FF4500;
+         box-shadow: 0 0 20px rgba(255, 69, 0, 0.6);
+         animation: legendaryPulse 3s ease-in-out infinite;
+       }
+       
+       /* Profile Tabs */
+       .profile-tabs-card {
+         background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(40, 40, 40, 0.9) 100%);
+         border: 1px solid rgba(255, 72, 72, 0.2);
+       }
+       
+       .profile-tabs {
+         border-bottom: 1px solid rgba(255, 72, 72, 0.2);
+       }
+       
+       .profile-tabs .nav-link {
+         color: #adadad;
+         border: none;
+         background: transparent;
+         padding: 1rem 1.5rem;
+         transition: all 0.3s ease;
+       }
+       
+       .profile-tabs .nav-link:hover {
+         color: #FF4848;
+         background: rgba(255, 72, 72, 0.1);
+       }
+       
+       .profile-tabs .nav-link.active {
+         color: #FF4848;
+         background: rgba(255, 72, 72, 0.15);
+         border-bottom: 2px solid #FF4848;
+       }
+       
+       /* Profile Invites */
+       .profile-invites-card {
+         background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(40, 40, 40, 0.9) 100%);
+         border: 1px solid rgba(255, 72, 72, 0.2);
+       }
+       
+       .balance-amount {
+         color: #FF4848;
+         font-weight: 700;
+         font-size: 1.1rem;
+       }
+       
+       .no-clan {
+         text-align: center;
+         padding: 2rem;
+       }
+       
+       .no-clan h6 {
+         color: #adadad;
+         margin-bottom: 1rem;
+       }
+       
+       .no-clan p {
+         color: #888;
+         margin-bottom: 1.5rem;
+       }
+       
+       .no-invites {
+         text-align: center;
+         padding: 2rem;
+       }
+       
+       .no-invites h6 {
+         color: #adadad;
+         margin-bottom: 1rem;
+       }
+       
+       .no-invites p {
+         color: #888;
+       }
+       
+       .invite-actions {
+         display: flex;
+         gap: 0.5rem;
+       }
+       
+       .btn-accept {
+         background: linear-gradient(135deg, var(--primary-color), #FF6B6B);
+         border: none;
+         color: white;
+         padding: 0.5rem 1rem;
+         border-radius: 6px;
+         transition: all 0.3s ease;
+         text-transform: uppercase;
+         letter-spacing: 0.5px;
+         font-weight: 500;
+         font-size: 0.8rem;
+       }
+       
+       .btn-accept:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 5px 15px rgba(255, 72, 72, 0.4);
+         color: white;
+         background: linear-gradient(135deg, #e63939, #ff5252);
+       }
+       
+       .btn-decline {
+         background: linear-gradient(135deg, var(--text-dark), #6D6D6D);
+         border: none;
+         color: white;
+         padding: 0.5rem 1rem;
+         border-radius: 6px;
+         transition: all 0.3s ease;
+         text-transform: uppercase;
+         letter-spacing: 0.5px;
+         font-weight: 500;
+         font-size: 0.8rem;
+       }
+       
+       .btn-decline:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 5px 15px rgba(109, 109, 109, 0.4);
+         color: white;
+         background: linear-gradient(135deg, #5a5a5a, #5c5c5c);
+       }
+       
+       .no-clan {
+         text-align: center;
+         padding: 2rem;
+         color: var(--text-secondary);
+       }
+       
+       .no-clan img {
+         font-size: 3rem;
+         margin-bottom: 1rem;
+         opacity: 0.5;
+       }
+       
+       .no-invites {
+         text-align: center;
+         padding: 2rem;
+         color: var(--text-secondary);
+       }
+       
+       .no-invites img {
+         font-size: 3rem;
+         margin-bottom: 1rem;
+         opacity: 0.5;
+       }
+       
+       /* Profile Tabs Styles */
+       .profile-tabs {
+         border: none;
+         background: transparent;
+         margin-bottom: 0;
+       }
+       
+       .profile-tabs .nav-link {
+         border: none;
+         background: transparent;
+         color: var(--text-secondary);
+         padding: 1rem 1.5rem;
+         border-radius: 0;
+         border-bottom: 3px solid transparent;
+         transition: all 0.3s ease;
+         font-weight: 600;
+         text-transform: uppercase;
+         letter-spacing: 0.5px;
+         font-size: 0.9rem;
+         position: relative;
+         overflow: hidden;
+       }
+       
+       .profile-tabs .nav-link:hover {
+         color: var(--primary-color);
+         background: rgba(0, 212, 255, 0.05);
+         border-bottom-color: rgba(0, 212, 255, 0.3);
+         transform: translateY(-2px);
+       }
+       
+       .profile-tabs .nav-link.active {
+         color: var(--primary-color);
+         background: rgba(0, 212, 255, 0.1);
+         border-bottom-color: var(--primary-color);
+         box-shadow: 0 2px 10px rgba(0, 212, 255, 0.2);
+       }
+       
+       .profile-tabs .nav-link.active::before {
+         content: '';
+         position: absolute;
+         top: 0;
+         left: 0;
+         right: 0;
+         height: 2px;
+         background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+       }
+       
+       .profile-tabs .nav-link img {
+         margin-right: 0.5rem;
+         font-size: 1rem;
+       }
+       
+       /* Tab Content Styles */
+       .tab-content {
+         min-height: 400px;
+         padding: 1rem 0;
+       }
+       
+       .tab-pane {
+         animation: fadeInUp 0.3s ease-in-out;
+       }
+       
+       /* Стили для аватарки */
+       .avatar-container {
+         position: relative;
+         display: inline-block;
+       }
+       
+       .user-avatar-img {
+         width: 120px;
+         height: 120px;
+         border-radius: 50%;
+         object-fit: cover;
+         border: 3px solid var(--primary-color);
+         /* Поддержка GIF-анимаций */
+         image-rendering: -webkit-optimize-contrast;
+         image-rendering: crisp-edges;
+       }
+       
+       .avatar-upload-btn {
+         position: absolute;
+         bottom: 0;
+         right: 0;
+         width: 35px;
+         height: 35px;
+         border-radius: 50%;
+         background: linear-gradient(135deg, var(--primary-color), #FF6B6B);
+         border: none;
+         color: white;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         cursor: pointer;
+         transition: all 0.3s ease;
+         box-shadow: 0 2px 8px rgba(255, 72, 72, 0.3);
+       }
+       
+       .avatar-upload-btn:hover {
+         background: linear-gradient(135deg, #e63939, #ff5252);
+         transform: scale(1.1);
+         box-shadow: 0 4px 12px rgba(255, 72, 72, 0.4);
+       }
+       
+       .avatar-upload-btn:disabled {
+         opacity: 0.7;
+         cursor: not-allowed;
+         transform: none;
+       }
+       
+       /* Стили для баланса */
+       .balance-amount {
+         font-weight: bold;
+         color: var(--primary-color);
+         font-size: 1.1em;
+       }
+       
+       /* Стили для уровня и опыта */
+       .level-info {
+         text-align: center;
+       }
+       
+       .level-badge {
+         display: inline-flex;
+         flex-direction: column;
+         align-items: center;
+         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+         color: white;
+         padding: 0.5rem 1rem;
+         border-radius: 20px;
+         box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+       }
+       
+       .level-number {
+         font-size: 1.5rem;
+         font-weight: 900;
+         line-height: 1;
+       }
+       
+       .level-label {
+         font-size: 0.8rem;
+         opacity: 0.9;
+         text-transform: uppercase;
+         letter-spacing: 0.5px;
+       }
+       
+       .experience-bar {
+         max-width: 200px;
+         margin: 0 auto;
+       }
+       
+       .experience-bar .progress {
+         background: rgba(255, 255, 255, 0.1);
+         border: 1px solid rgba(255, 255, 255, 0.2);
+       }
+       
+       .experience-bar .progress-bar {
+         background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+         box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+       }
+       
+       /* Стили для инвентаря */
+       .inventory-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+         gap: 1rem;
+       }
+       
+       .inventory-item {
+         background: rgba(255, 255, 255, 0.05);
+         border: 1px solid var(--card-border);
+         border-radius: 8px;
+         padding: 1rem;
+         transition: all 0.3s ease;
+       }
+       
+       .inventory-item:hover {
+         background: rgba(255, 255, 255, 0.1);
+         transform: translateY(-2px);
+       }
+       
+       .inventory-item.equipped {
+         border-color: var(--primary-color);
+         background: rgba(0, 212, 255, 0.1);
+       }
+       
+       .equipped-badge {
+         position: absolute;
+         top: 0.5rem;
+         right: 0.5rem;
+         background: var(--primary-color);
+         color: white;
+         padding: 0.2rem 0.5rem;
+         border-radius: 4px;
+         font-size: 0.7rem;
+         font-weight: 600;
+       }
+       
+       .item-image {
+         width: 100%;
+         height: 80px;
+         background: rgba(255, 255, 255, 0.05);
+         border-radius: 8px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin-bottom: 1rem;
+       }
+       
+       .item-name {
+         font-size: 1rem;
+         font-weight: 700;
+         color: var(--text-primary);
+         margin-bottom: 0.5rem;
+       }
+       
+       .item-description {
+         color: var(--text-secondary);
+         font-size: 0.8rem;
+         margin-bottom: 1rem;
+         line-height: 1.4;
+       }
+       
+       .item-actions {
+         display: flex;
+         gap: 0.5rem;
+       }
+       
+       /* Стили для достижений */
+       .achievement-summary {
+         background: rgba(0, 212, 255, 0.05);
+         border-radius: 10px;
+         padding: 1.5rem;
+         border-left: 4px solid var(--primary-color);
+       }
+       
+       .achievement-stat {
+         text-align: center;
+         padding: 1rem;
+       }
+       
+       .achievement-stat .stat-number {
+         font-size: 2rem;
+         font-weight: 700;
+         color: var(--primary-color);
+         font-family: 'Orbitron', monospace;
+         margin-bottom: 0.5rem;
+       }
+       
+       .achievement-stat .stat-label {
+         color: var(--text-secondary);
+         font-size: 0.9rem;
+         text-transform: uppercase;
+         letter-spacing: 0.5px;
+       }
+       
+       .achievement-card {
+         background: rgba(255, 255, 255, 0.05);
+         border: 1px solid var(--card-border);
+         border-radius: 10px;
+         padding: 1rem;
+         margin-bottom: 1rem;
+         transition: all 0.3s ease;
+         position: relative;
+         overflow: hidden;
+       }
+       
+       .achievement-card:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+       }
+       
+       .achievement-card.completed {
+         border-color: var(--primary-color);
+         background: rgba(0, 212, 255, 0.1);
+       }
+       
+       .achievement-card.rare {
+         border-color: #9c27b0;
+         background: rgba(156, 39, 176, 0.1);
+       }
+       
+       .achievement-card.epic {
+         border-color: #ff9800;
+         background: rgba(255, 152, 0, 0.1);
+       }
+       
+       .achievement-card.legendary {
+         border-color: #f44336;
+         background: rgba(244, 67, 54, 0.1);
+       }
+       
+       .achievement-header {
+         display: flex;
+         align-items: center;
+         margin-bottom: 0.5rem;
+       }
+       
+       .achievement-icon {
+         width: 40px;
+         height: 40px;
+         background: var(--primary-color);
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         margin-right: 1rem;
+         font-size: 1.2rem;
+         color: white;
+       }
+       
+       .achievement-info {
+         flex: 1;
+       }
+       
+       .achievement-name {
+         font-weight: 700;
+         color: var(--text-primary);
+         margin-bottom: 0.25rem;
+       }
+       
+       .achievement-description {
+         color: var(--text-secondary);
+         font-size: 0.9rem;
+       }
+       
+       .achievement-progress {
+         margin-top: 1rem;
+       }
+       
+       .achievement-progress .progress-bar {
+         width: 100%;
+         height: 8px;
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: 4px;
+         overflow: hidden;
+         margin-bottom: 0.5rem;
+       }
+       
+       .achievement-progress .progress-fill {
+         height: 100%;
+         background: var(--gradient-primary);
+         border-radius: 4px;
+         transition: width 0.3s ease;
+       }
+       
+       .achievement-progress .progress-text {
+         display: flex;
+         justify-content: space-between;
+         font-size: 0.8rem;
+         color: var(--text-secondary);
+       }
+       
+       .achievement-points {
+         position: absolute;
+         top: 0.5rem;
+         right: 0.5rem;
+         background: var(--primary-color);
+         color: white;
+         padding: 0.2rem 0.5rem;
+         border-radius: 4px;
+         font-size: 0.7rem;
+         font-weight: 600;
+       }
+       
+       .achievement-completed-badge {
+         position: absolute;
+         top: 0.5rem;
+         left: 0.5rem;
+         background: #4caf50;
+         color: white;
+         padding: 0.2rem 0.5rem;
+         border-radius: 4px;
+         font-size: 0.7rem;
+         font-weight: 600;
+       }
+       
+       .achievements-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+         gap: 1rem;
+       }
+       
+       .recent-achievements-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+         gap: 1rem;
+       }
+       
+       /* Стили для статистики */
+       .main-stats-container {
+         background: linear-gradient(135deg, var(--darker-bg) 0%, var(--card-bg) 100%);
+         border: 1px solid var(--card-border);
+         border-radius: 8px;
+         padding: 1.5rem;
+         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+         margin-bottom: 1rem;
+       }
+       
+       .main-stats-header {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         margin-bottom: 1.5rem;
+       }
+       
+       .main-stats-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+         gap: 1rem;
+         margin-bottom: 1rem;
+       }
+       
+       .main-stat-card {
+         display: flex;
+         align-items: center;
+         gap: 0.75rem;
+         padding: 1rem;
+         background: rgba(255, 255, 255, 0.05);
+         border-radius: 6px;
+         transition: all 0.3s ease;
+       }
+       
+       .main-stat-card:hover {
+         background: rgba(255, 255, 255, 0.1);
+         transform: translateY(-2px);
+       }
+       
+       .main-stat-card.wins {
+         border-left: 3px solid #4CAF50;
+       }
+       
+       .main-stat-card.losses {
+         border-left: 3px solid #FF4848;
+       }
+       
+       .main-stat-icon {
+         width: 40px;
+         height: 40px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         border-radius: 6px;
+         font-size: 1.2rem;
+         color: var(--text-secondary);
+         background: rgba(255, 255, 255, 0.1);
+         flex-shrink: 0;
+       }
+       
+       .main-stat-card.wins .main-stat-icon {
+         color: #4CAF50;
+         background: rgba(76, 175, 80, 0.2);
+       }
+       
+       .main-stat-card.losses .main-stat-icon {
+         color: #FF4848;
+         background: rgba(255, 72, 72, 0.2);
+       }
+       
+       .main-stat-content {
+         flex: 1;
+       }
+       
+       .main-stat-number {
+         font-size: 1.5rem;
+         font-weight: 900;
+         color: var(--text-primary);
+         margin-bottom: 0.25rem;
+       }
+       
+       .main-stat-label {
+         font-size: 0.75rem;
+         color: var(--text-secondary);
+         font-weight: 600;
+         text-transform: uppercase;
+         letter-spacing: 0.5px;
+       }
+       
+       .main-stats-progress {
+         margin-top: 1rem;
+       }
+       
+       .main-stats-progress .progress-bar {
+         height: 6px;
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: 3px;
+         overflow: hidden;
+         display: flex;
+       }
+       
+       .main-stats-progress .progress-fill {
+         height: 100%;
+         transition: width 0.3s ease;
+       }
+       
+       .main-stats-progress .progress-fill.wins {
+         background: linear-gradient(90deg, #4CAF50, #66BB6A);
+       }
+       
+       .main-stats-progress .progress-fill.losses {
+         background: linear-gradient(90deg, #FF4848, #FF6B6B);
+       }
+       
+       .factions-header {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         margin-bottom: 1rem;
+       }
+       
+       .factions-count {
+         font-size: 0.8rem;
+         color: var(--text-secondary);
+         font-weight: 600;
+         padding: 0.25rem 0.5rem;
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: 3px;
+       }
+       
+       .factions-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+         gap: 1rem;
+       }
+       
+       .faction-stat-card {
+         background: linear-gradient(135deg, var(--darker-bg) 0%, var(--card-bg) 100%);
+         border: 1px solid var(--card-border);
+         border-radius: 8px;
+         padding: 1rem;
+         transition: all 0.3s ease;
+         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+       }
+       
+       .faction-stat-card:hover {
+         border-color: #FF4848;
+         background: linear-gradient(135deg, var(--card-bg) 0%, var(--darker-bg) 100%);
+         transform: translateY(-2px);
+         box-shadow: 0 4px 16px rgba(255, 72, 72, 0.2);
+       }
+       
+       .faction-header {
+         display: flex;
+         align-items: flex-start;
+         justify-content: space-between;
+         margin-bottom: 0.75rem;
+       }
+       
+       .faction-info {
+         display: flex;
+         align-items: center;
+         gap: 0.75rem;
+         flex: 1;
+       }
+       
+       .faction-icon {
+         width: 24px;
+         height: 24px;
+         border-radius: 3px;
+         box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+         flex-shrink: 0;
+       }
+       
+       .faction-details {
+         flex: 1;
+       }
+       
+       .faction-name {
+         font-size: 1rem;
+         font-weight: 800;
+         color: var(--text-primary);
+         margin-bottom: 0.25rem;
+       }
+       
+       .faction-meta {
+         display: flex;
+         align-items: center;
+         gap: 0.5rem;
+         font-size: 0.75rem;
+       }
+       
+       .games-count {
+         color: var(--text-secondary);
+         font-weight: 600;
+       }
+       
+       .winrate-badge {
+         padding: 0.2rem 0.4rem;
+         border-radius: 3px;
+         font-weight: 800;
+         font-size: 0.7rem;
+         border: 1px solid;
+       }
+       
+       .winrate-badge.winrate-high {
+         background: rgba(76, 175, 80, 0.2);
+         color: #4CAF50;
+         border-color: #4CAF50;
+       }
+       
+       .winrate-badge.winrate-medium {
+         background: rgba(255, 193, 7, 0.2);
+         color: #FFC107;
+         border-color: #FFC107;
+       }
+       
+       .winrate-badge.winrate-low {
+         background: rgba(255, 72, 72, 0.2);
+         color: #FF4848;
+         border-color: #FF4848;
+       }
+       
+       .faction-summary {
+         display: flex;
+         gap: 1rem;
+         align-items: center;
+       }
+       
+       .summary-stat {
+         text-align: center;
+         min-width: 40px;
+       }
+       
+       .summary-stat .stat-number {
+         font-weight: 900;
+         font-size: 1.1em;
+         margin-bottom: 0.1rem;
+       }
+       
+       .summary-stat .stat-label {
+         font-size: 0.6em;
+         color: #929292;
+         font-weight: 600;
+         text-transform: uppercase;
+         letter-spacing: 0.5px;
+       }
+       
+       .faction-progress {
+         margin-top: 0.75rem;
+       }
+       
+       .progress-bar {
+         height: 4px;
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: 2px;
+         overflow: hidden;
+         display: flex;
+       }
+       
+       .progress-fill {
+         height: 100%;
+         transition: width 0.3s ease;
+       }
+       
+       .progress-fill.wins {
+         background: linear-gradient(90deg, #4CAF50, #66BB6A);
+       }
+       
+       .progress-fill.losses {
+         background: linear-gradient(90deg, #FF4848, #FF6B6B);
+       }
+       
+       .recent-matches-container {
+         background: linear-gradient(135deg, var(--darker-bg) 0%, var(--card-bg) 100%);
+         border: 1px solid var(--card-border);
+         border-radius: 8px;
+         padding: 1.5rem;
+         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+       }
+       
+       .recent-matches-header {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         margin-bottom: 1rem;
+       }
+       
+       .matches-count {
+         font-size: 0.8rem;
+         color: var(--text-secondary);
+         font-weight: 600;
+         padding: 0.25rem 0.5rem;
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: 3px;
+       }
+       
+       .recent-matches-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+         gap: 1rem;
+       }
+       
+       .recent-match-card {
+         background: rgba(255, 255, 255, 0.05);
+         border: 1px solid var(--card-border);
+         border-radius: 6px;
+         padding: 1rem;
+         transition: all 0.3s ease;
+       }
+       
+       .recent-match-card:hover {
+         background: rgba(255, 255, 255, 0.1);
+         transform: translateY(-2px);
+       }
+       
+       .recent-match-card.win {
+         border-left: 3px solid #4CAF50;
+       }
+       
+       .recent-match-card.loss {
+         border-left: 3px solid #FF4848;
+       }
+       
+       .match-header {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         margin-bottom: 0.75rem;
+       }
+       
+       .match-result-icon {
+         width: 24px;
+         height: 24px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         border-radius: 4px;
+         font-size: 0.9rem;
+       }
+       
+       .recent-match-card.win .match-result-icon {
+         color: #4CAF50;
+         background: rgba(76, 175, 80, 0.2);
+       }
+       
+       .recent-match-card.loss .match-result-icon {
+         color: #FF4848;
+         background: rgba(255, 72, 72, 0.2);
+       }
+       
+       .match-date {
+         font-size: 0.75rem;
+         color: var(--text-secondary);
+         font-weight: 600;
+       }
+       
+       .match-content {
+         display: flex;
+         flex-direction: column;
+         gap: 0.5rem;
+       }
+       
+       .match-factions {
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         gap: 0.5rem;
+       }
+       
+       .faction-vs {
+         display: flex;
+         align-items: center;
+         gap: 0.5rem;
+         font-size: 0.8rem;
+         font-weight: 600;
+       }
+       
+       .faction-icon-small {
+         width: 16px;
+         height: 16px;
+         border-radius: 2px;
+       }
+       
+       .vs-separator {
+         font-size: 0.7rem;
+         color: var(--text-secondary);
+         font-weight: 800;
+         padding: 0.1rem 0.3rem;
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: 2px;
+       }
+       
+       .match-info {
+         display: flex;
+         flex-direction: column;
+         gap: 0.25rem;
+       }
+       
+       .match-opponent {
+         font-size: 0.8rem;
+         font-weight: 700;
+         color: var(--text-primary);
+       }
+       
+       .match-map {
+         font-size: 0.7rem;
+         color: var(--text-secondary);
+       }
+      
+      /* Темные карточки по умолчанию */
+      .card {
+        background: rgba(var(--card-bg-rgb), 0.9) !important;
+        border: 1px solid var(--card-border) !important;
+        color: var(--text-primary) !important;
+      }
+      
+      .card .card-body {
+        background: rgba(var(--card-bg-rgb), 0.9) !important;
+        color: var(--text-primary) !important;
+      }
+      
+      .card .card-header {
+        background: rgba(var(--card-bg-rgb), 0.9) !important;
+        border-bottom: 1px solid var(--card-border) !important;
+        color: var(--text-primary) !important;
+      }
+
+      /* Фон для всех страниц кроме главной */
+      .app-container {
+        position: relative;
+        min-height: 100vh;
+      }
+      
+      .app-container::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--page-overlay);
+        background-image: var(--page-background-image);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-blend-mode: var(--page-background-blend);
+        background-size: cover;
+        z-index: -1;
+      }
+      
+
+      
+      /* Адаптивность */
+      @media (max-width: 768px) {
+        .display-3 {
+          font-size: 2.5rem;
+        }
+        
+        .lead {
+          font-size: 1.1rem;
+        }
+      }
+      
+      /* Override Bootstrap text-muted class for profile page */
+      .text-center.text-muted {
+        color: var(--text-muted) !important;
+      }
+      
+      /* Profile Settings Form Styles - в стиле приложения */
+      .settings-section {
+        background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(40, 40, 40, 0.9) 100%);
+        border: 1px solid rgba(255, 72, 72, 0.2);
+        border-radius: 15px;
+        padding: 2rem;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+      
+      .settings-section .form-label {
+        color: white !important;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      .settings-section .form-text {
+        color: #e0e0e0 !important;
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+        font-style: italic;
+      }
+      
+      .settings-section .form-select,
+      .settings-section .form-control {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        transition: all 0.3s ease;
+      }
+      
+      .settings-section .form-select:hover,
+      .settings-section .form-control:hover {
+        background: rgba(255, 255, 255, 0.15) !important;
+        border-color: rgba(255, 72, 72, 0.4) !important;
+      }
+      
+      .settings-section .form-select:focus,
+      .settings-section .form-control:focus {
+        background: rgba(255, 255, 255, 0.2) !important;
+        border-color: #FF4848 !important;
+        box-shadow: 0 0 0 0.2rem rgba(255, 72, 72, 0.25) !important;
+        color: white !important;
+        transform: translateY(-1px);
+      }
+      
+      .settings-section .form-select option {
+        background-color: #2a2a2a !important;
+        color: white !important;
+      }
+      
+      .settings-section .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.6) !important;
+      }
+      
+      .settings-section .form-check {
+        display: flex !important;
+        align-items: center !important;
+        padding: 0.5rem 0 !important;
+      }
+      
+      .settings-section .form-check-label {
+        color: white !important;
+        font-weight: 500;
+        font-size: 1rem;
+        margin-left: 0.5rem;
+        cursor: pointer !important;
+        user-select: none !important;
+      }
+      
+      .settings-section .form-check-input {
+        background-color: rgba(255, 72, 72, 0.1) !important;
+        border-color: rgba(255, 72, 72, 0.3) !important;
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-top: 0.1rem;
+        border-radius: 4px !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      .settings-section .form-check-input:hover {
+        background-color: rgba(255, 72, 72, 0.2) !important;
+        border-color: rgba(255, 72, 72, 0.5) !important;
+        transform: scale(1.05);
+      }
+      
+      .settings-section .form-check-input:checked {
+        background-color: #FF4848 !important;
+        border-color: #FF4848 !important;
+      }
+      
+      .settings-section .form-check-input:focus {
+        box-shadow: 0 0 0 0.2rem rgba(255, 72, 72, 0.25) !important;
+      }
+      
+      .setting-item {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        border-left: 3px solid rgba(255, 72, 72, 0.3);
+        transition: all 0.3s ease;
+      }
+      
+      .setting-item:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-left-color: #FF4848;
+        transform: translateX(5px);
+      }
+      
+      .settings-section .btn-primary {
+        background: linear-gradient(135deg, #FF4848, #FF6B6B) !important;
+        border: none !important;
+        color: white !important;
+        padding: 0.75rem 2rem !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 4px 15px rgba(255, 72, 72, 0.3) !important;
+      }
+      
+      .settings-section .btn-primary:hover {
+        background: linear-gradient(135deg, #e63939, #ff5252) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 25px rgba(255, 72, 72, 0.4) !important;
+      }
+      
+      .settings-section .btn-primary:disabled {
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: rgba(255, 255, 255, 0.5) !important;
+        transform: none !important;
+        box-shadow: none !important;
+      }
+      
+      /* Profile Button Styles */
+      .btn-primary {
+        background: var(--gradient-primary) !important;
+        border: none !important;
+        color: white !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      .btn-primary:hover {
+        background: linear-gradient(135deg, var(--primary-hover-color), var(--primary-hover-soft-color)) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 8px rgba(var(--primary-rgb), 0.3) !important;
+      }
+      
+      .btn-secondary {
+        background: linear-gradient(135deg, var(--text-dark), #6D6D6D) !important;
+        border: none !important;
+        color: white !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      .btn-secondary:hover {
+        background: linear-gradient(135deg, #5a5a5a, #5c5c5c) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 8px rgba(109, 109, 109, 0.3) !important;
+      }
+      
+      .btn-outline-primary {
+        background: transparent !important;
+        border: 2px solid var(--primary-color) !important;
+        color: var(--primary-color) !important;
+        transition: all 0.3s ease !important;
+      }
+      
+      .btn-outline-primary:hover {
+        background: var(--primary-color) !important;
+        color: white !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 8px rgba(var(--primary-rgb), 0.3) !important;
+      }
+      
+      /* Shop Styles */
+      .balance-display {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .balance-label {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        font-weight: 600;
+      }
+
+      .category-tabs {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .category-tab {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        padding: 0.75rem 1.5rem;
+        color: var(--text-secondary);
+        font-weight: 600;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+      }
+
+      .category-tab:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+
+      .category-tab.active {
+        background: var(--gradient-primary);
+        color: white;
+        border-color: var(--primary-color);
+      }
+
+      .shop-items-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .shop-item-card {
+        background: linear-gradient(135deg, var(--darker-bg) 0%, var(--card-bg) 100%);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .shop-item-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .shop-item-card.rare {
+        border-color: #4CAF50;
+        box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+      }
+
+      .shop-item-card.epic {
+        border-color: #9C27B0;
+        box-shadow: 0 0 20px rgba(156, 39, 176, 0.3);
+      }
+
+      .shop-item-card.legendary {
+        border-color: #FF9800;
+        box-shadow: 0 0 20px rgba(255, 152, 0, 0.3);
+      }
+
+      .item-image {
+        text-align: center;
+        margin-bottom: 1rem;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .item-name {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+
+      .item-description {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        min-height: 40px;
+      }
+
+      .item-price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .price-amount {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .rarity-badge {
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: white;
+        text-transform: uppercase;
+      }
+
+      .item-actions {
+        text-align: center;
+      }
+
+      .btn-buy {
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .btn-buy:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 72, 72, 0.4);
+      }
+
+      .btn-buy:disabled {
+        background: var(--text-secondary);
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .inventory-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .inventory-item {
+        background: linear-gradient(135deg, var(--darker-bg) 0%, var(--card-bg) 100%);
+        border: 1px solid var(--card-border);
+        border-radius: 8px;
+        padding: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .inventory-item.equipped {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 15px rgba(255, 72, 72, 0.3);
+      }
+
+      .equipped-badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: var(--gradient-primary);
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 12px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        z-index: 1;
+      }
+      
+              /* Стили для экипированных предметов в профиле */
+        .equipped-items {
+          margin-top: 2rem;
+        }
+        
+        .equipped-items-grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          justify-content: center;
+        }
+        
+        .equipped-item-badge {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: rgba(255, 72, 72, 0.1);
+          border: 1px solid rgba(255, 72, 72, 0.3);
+          border-radius: 20px;
+          padding: 0.5rem 1rem;
+          transition: all 0.3s ease;
+        }
+        
+        .equipped-item-badge:hover {
+          background: rgba(255, 72, 72, 0.2);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(255, 72, 72, 0.3);
+        }
+        
+        .equipped-item-name {
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: var(--text-primary);
+        }
+
+        /* Стили для фонов профиля */
+        .anime-background {
+          position: relative;
+          overflow: visible !important;
+        }
+
+        /* Убираем overflow hidden с body при применении анимированного фона */
+        body.anime-background {
+          overflow: visible !important;
+          overflow-x: auto !important;
+          overflow-y: auto !important;
+        }
+
+        body.presidents-background {
+          overflow: visible !important;
+          overflow-x: auto !important;
+          overflow-y: auto !important;
+        }
+
+        /* Убираем overflow hidden с html при применении анимированного фона */
+        html.anime-background {
+          overflow: visible !important;
+          overflow-x: auto !important;
+          overflow-y: auto !important;
+        }
+
+        html.presidents-background {
+          overflow: visible !important;
+          overflow-x: auto !important;
+          overflow-y: auto !important;
+        }
+
+        /* Убираем overflow hidden с app-container при применении анимированного фона */
+        .app-container.anime-background {
+          overflow: visible !important;
+          overflow-x: auto !important;
+          overflow-y: auto !important;
+        }
+
+        .app-container.presidents-background {
+          overflow: visible !important;
+          overflow-x: auto !important;
+          overflow-y: auto !important;
+        }
+
+        /* Дополнительные стили для анимированного фона */
+        body.anime-background {
+          background: none !important;
+          background-color: transparent !important;
+        }
+
+        body.presidents-background {
+          background: none !important;
+          background-color: transparent !important;
+        }
+        
+
+
+
+
+        /* Видео фон для аниме */
+        .anime-background-video {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          object-fit: cover;
+          opacity: 0.6;
+          pointer-events: none;
+          filter: brightness(0.9) contrast(1.1);
+        }
+
+        /* Видео фон для президентского фона */
+        .presidents-background-video {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          object-fit: cover;
+          opacity: 0.6;
+          pointer-events: none;
+          filter: brightness(0.9) contrast(1.1);
+        }
+
+        /* Стили для президентского фона */
+        .presidents-background {
+          position: relative;
+          overflow: visible !important;
+        }
+
+
+
+        /* Убираем основной фон когда применяется анимированный */
+        body.anime-background::before {
+          display: none !important;
+        }
+
+        body.presidents-background::before {
+          display: none !important;
+        }
+
+        /* Убираем основной фон из app-container когда применяется анимированный */
+        body.anime-background .app-container::before {
+          display: none !important;
+        }
+
+        body.presidents-background .app-container::before {
+          display: none !important;
+        }
+        
+        /* Убираем фон app-container когда применяется анимированный */
+        .app-container.anime-background::before {
+          display: none !important;
+        }
+
+        .app-container.presidents-background::before {
+          display: none !important;
+        }
+
+        /* Рамки профиля */
+        .profile-frame-gold {
+          border: 3px solid #FFD700 !important;
+          box-shadow: 0 0 20px rgba(255, 215, 0, 0.5) !important;
+          background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%) !important;
+        }
+
+        .profile-frame-crystal {
+          border: 3px solid #00FFFF !important;
+          box-shadow: 0 0 30px rgba(0, 255, 255, 0.6) !important;
+          background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+          animation: crystalGlow 2s ease-in-out infinite alternate;
+        }
+
+        .profile-frame-legendary {
+          border: 3px solid #FF4500 !important;
+          box-shadow: 0 0 40px rgba(255, 69, 0, 0.7) !important;
+          background: linear-gradient(135deg, rgba(255, 69, 0, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%) !important;
+          animation: legendaryPulse 3s ease-in-out infinite;
+        }
+
+        /* Стили карточек статистики */
+        .stat-card-neon {
+          border: 2px solid #00FF00 !important;
+          box-shadow: 0 0 15px rgba(0, 255, 0, 0.4) !important;
+          background: linear-gradient(135deg, rgba(0, 255, 0, 0.05) 0%, rgba(0, 0, 0, 0.1) 100%) !important;
+        }
+
+        .stat-card-metal {
+          border: 2px solid #C0C0C0 !important;
+          box-shadow: 0 0 20px rgba(192, 192, 192, 0.5) !important;
+          background: linear-gradient(135deg, rgba(192, 192, 192, 0.1) 0%, rgba(128, 128, 128, 0.05) 100%) !important;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        .stat-card-holographic {
+          border: 2px solid transparent !important;
+          background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000) !important;
+          background-size: 400% 400% !important;
+          animation: holographicShift 4s ease infinite !important;
+          box-shadow: 0 0 25px rgba(255, 255, 255, 0.3) !important;
+        }
+
+        /* Анимации */
+        @keyframes crystalGlow {
+          0% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.6); }
+          100% { box-shadow: 0 0 50px rgba(0, 255, 255, 0.8); }
+        }
+
+        @keyframes legendaryPulse {
+          0% { 
+            box-shadow: 0 0 40px rgba(255, 69, 0, 0.7);
+            transform: scale(1);
+          }
+          50% { 
+            box-shadow: 0 0 60px rgba(255, 69, 0, 0.9);
+            transform: scale(1.02);
+          }
+          100% { 
+            box-shadow: 0 0 40px rgba(255, 69, 0, 0.7);
+            transform: scale(1);
+          }
+        }
+
+        @keyframes holographicShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        /* Составная косметика профиля: фон, аватар и рамка — разные слои. */
+        .cosmetic-preview {
+          position: relative;
+          width: min(100%, 168px);
+          aspect-ratio: 16 / 10;
+          margin: 0 auto;
+          display: grid;
+          place-items: center;
+          overflow: hidden;
+          border: 1px solid var(--card-border);
+          border-radius: 14px;
+          background: rgba(var(--card-bg-rgb), 0.92);
+        }
+
+        .cosmetic-avatar-preview {
+          position: relative;
+          width: 62px;
+          height: 62px;
+          display: grid;
+          place-items: center;
+          border-radius: 50%;
+          background: #10141d;
+        }
+
+        .cosmetic-avatar-preview img {
+          width: 54px;
+          height: 54px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .avatar-container.avatar-frame-palantir::before,
+        .cosmetic-avatar-preview.avatar-frame-palantir::before {
+          content: "";
+          position: absolute;
+          z-index: 2;
+          pointer-events: none;
+          background: url(/cosmetics/steam-profile-avatar-frame.png) center / 100% 100% no-repeat;
+          image-rendering: pixelated;
+        }
+
+        .avatar-container.avatar-frame-palantir::before {
+          inset: -14px;
+        }
+
+        .cosmetic-avatar-preview.avatar-frame-palantir::before {
+          inset: -6px;
+        }
+
+        .avatar-container.avatar-frame-palantir .avatar-upload-btn {
+          z-index: 4;
+        }
+
+        .profile-avatar {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .avatar-upload-action {
+          margin-top: 22px;
+        }
+
+        .avatar-upload-action .avatar-upload-btn {
+          position: static;
+          width: auto;
+          height: 36px;
+          min-width: 154px;
+          padding: 0 16px;
+          gap: 8px;
+          border-radius: 999px;
+        }
+
+        .cosmetic-preview--background.profile-background-starlight {
+          background-color: #d8dbe5;
+          background-image: url(/cosmetics/steam-profile-background-poster.jpg);
+          background-position: center;
+          background-size: cover;
+        }
+
+        .cosmetic-preview--background.profile-background-starlight span,
+        .cosmetic-preview--background.profile-background-starlight i {
+          display: none;
+        }
+
+        .profile-background-starlight-video {
+          position: fixed;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          object-fit: cover;
+          pointer-events: none;
+          background: #d8dbe5 url(/cosmetics/steam-profile-background-poster.jpg) center / cover no-repeat;
+        }
+
+        body.profile-background-starlight::after,
+        body.profile-background-starlight .app-container::before,
+        .app-container.profile-background-starlight::before {
+          display: none !important;
+        }
+
+        .cosmetic-preview--background span {
+          width: 72%;
+          height: 38%;
+          border: 1px solid rgba(117, 242, 223, 0.5);
+          border-radius: 8px;
+          background: rgba(12, 19, 39, 0.7);
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.36);
+        }
+
+        .cosmetic-preview--background i {
+          position: absolute;
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background: #d8fff9;
+          box-shadow: 28px -17px 0 #a98ae0, -31px 12px 0 #75f2df, 14px 22px 0 #ffffff;
+        }
+
+        .profile-background-starlight .profile-header-card {
+          border-color: rgba(137, 221, 238, 0.48) !important;
+          box-shadow: 0 18px 60px rgba(31, 58, 109, 0.32) !important;
+        }
+
+        body.profile-background-starlight .container-fluid .card {
+          background: rgba(var(--card-bg-rgb), 0.74) !important;
+          backdrop-filter: blur(10px) saturate(1.08);
+        }
+
+        body.profile-background-starlight .container-fluid .card .card-body,
+        body.profile-background-starlight .container-fluid .card .tab-content {
+          background: transparent !important;
+        }
+
+        body.profile-background-starlight .container-fluid .card .card-header {
+          background: rgba(var(--card-bg-rgb), 0.28) !important;
+        }
+
+        body.profile-background-starlight header.MuiAppBar-root {
+          background: rgba(var(--card-bg-rgb), 0.78) !important;
+          backdrop-filter: blur(12px) saturate(1.08);
+        }
+
+        /* Поздние legacy-правила профиля тоже следуют активной теме сайта. */
+        html[data-site-theme] .profile-header-card,
+        html[data-site-theme] .profile-info-card,
+        html[data-site-theme] .profile-tabs-card,
+        html[data-site-theme] .profile-invites-card,
+        html[data-site-theme] .statistics-card,
+        html[data-site-theme] .settings-section {
+          border-color: rgba(var(--primary-rgb), 0.3) !important;
+        }
+
+        html[data-site-theme] .profile-tabs .nav-link:hover,
+        html[data-site-theme] .profile-tabs .nav-link.active,
+        html[data-site-theme] .balance-amount,
+        html[data-site-theme] .stat-value {
+          color: var(--primary-color) !important;
+        }
+
+        html[data-site-theme] .profile-tabs .nav-link:hover {
+          background: rgba(var(--primary-rgb), 0.08) !important;
+        }
+
+        html[data-site-theme] .profile-tabs .nav-link.active,
+        html[data-site-theme] .inventory-item.equipped {
+          background: rgba(var(--primary-rgb), 0.14) !important;
+          border-color: var(--primary-color) !important;
+        }
+
+        html[data-site-theme] .profile-tabs .nav-link.active::before {
+          background: var(--primary-color) !important;
+        }
+
+        html[data-site-theme] .profile-username,
+        html[data-site-theme] .level-badge,
+        html[data-site-theme] .experience-bar .progress-bar,
+        html[data-site-theme] .settings-section .btn-primary {
+          background: var(--gradient-primary) !important;
+        }
+
+        html[data-site-theme] .profile-username {
+          -webkit-background-clip: text !important;
+          background-clip: text !important;
+          -webkit-text-fill-color: transparent !important;
+        }
+
+        html[data-site-theme] .user-avatar-img,
+        html[data-site-theme] #defaultAvatar {
+          box-shadow: 0 0 24px rgba(var(--primary-rgb), 0.34) !important;
+        }
+
+        .shop-header-card {
+          background: linear-gradient(135deg, rgba(var(--card-bg-rgb), 0.96), rgba(var(--primary-rgb), 0.09)) !important;
+          border-color: rgba(var(--primary-rgb), 0.32) !important;
+          box-shadow: 0 18px 50px rgba(0, 0, 0, 0.32);
+        }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Bootstrap JS -->
+  </body>
+</html>

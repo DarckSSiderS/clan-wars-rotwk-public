@@ -1,0 +1,2 @@
+-r requirements.txt
+# Compatibility entry point for installing the website and bot together.

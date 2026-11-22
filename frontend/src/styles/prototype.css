@@ -1,0 +1,818 @@
+/* MIDDLEWAR.RU prototype V2/V3 translated to the live React application. */
+
+:root {
+  --cw-prototype-glass: rgba(13, 16, 14, 0.84);
+  --cw-prototype-card: linear-gradient(180deg, rgba(22, 26, 23, 0.92), rgba(12, 15, 13, 0.92));
+  --cw-prototype-line: rgba(210, 190, 140, 0.16);
+  --cw-prototype-shadow: 0 18px 60px rgba(0, 0, 0, 0.38);
+  --cw-route-art: url('/design-prototype/home.webp');
+  --cw-route-overlay: rgba(6, 8, 7, 0.45);
+}
+
+body::before {
+  display: none;
+}
+
+body::after {
+  z-index: -4;
+  background: var(--cw-bg-canvas);
+}
+
+.app-container {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background: var(--cw-bg-canvas);
+}
+
+.app-container::before,
+.app-container::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.app-container::before {
+  background-color: transparent;
+  background-image:
+    linear-gradient(var(--cw-route-overlay), var(--cw-route-overlay)),
+    var(--cw-route-art);
+  background-blend-mode: normal;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1;
+  transition: opacity var(--cw-duration-slow) var(--cw-ease);
+}
+
+.app-container:not([data-route-art='home'])::before {
+  background-image:
+    linear-gradient(var(--cw-route-overlay), var(--cw-route-overlay)),
+    var(--cw-route-art);
+  opacity: 1;
+}
+
+.app-container::after {
+  z-index: -1;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitchTiles'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+}
+
+.app-container[data-route-art='home'] { --cw-route-art: url('/design-prototype/home.webp'); }
+.app-container[data-route-art='map'] { --cw-route-art: url('/design-prototype/map.webp'); }
+.app-container[data-route-art='clans'] { --cw-route-art: url('/design-prototype/clans.webp'); }
+.app-container[data-route-art='clan'] { --cw-route-art: url('/design-prototype/clan.webp'); }
+.app-container[data-route-art='battles'] { --cw-route-art: url('/design-prototype/battles.webp'); }
+.app-container[data-route-art='ranking'] { --cw-route-art: url('/design-prototype/ranking.webp'); }
+.app-container[data-route-art='stats'] { --cw-route-art: url('/design-prototype/stats.webp'); }
+.app-container[data-route-art='shop'] { --cw-route-art: url('/design-prototype/shop.webp'); }
+.app-container[data-route-art='profile'] { --cw-route-art: url('/design-prototype/profile.webp'); }
+.app-container[data-route-art='achievements'] { --cw-route-art: url('/design-prototype/achievements.webp'); }
+.app-container[data-route-art='chronicle'] { --cw-route-art: url('/design-prototype/chronicle.webp'); }
+.app-container[data-route-art='auth'] { --cw-route-art: url('/design-prototype/auth.webp'); }
+.app-container[data-route-art='admin'] { --cw-route-art: none; }
+
+.app-container[data-route-art='admin']::before {
+  background: #0b0d0c;
+}
+
+.MuiDialog-root .MuiBackdrop-root {
+  background: rgba(0, 0, 0, 0.74);
+}
+
+.MuiDialog-root .MuiDialog-paper {
+  position: relative;
+  max-height: min(88vh, 52rem);
+  overflow: hidden;
+  color: var(--cw-text-primary, #f0ead8);
+  border: 1px solid rgba(210, 190, 140, 0.26);
+  border-radius: 10px;
+  background: #121512;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.38);
+  animation: cw-dialog-enter 180ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.MuiDialog-root .MuiDialogTitle-root {
+  padding: 1.75rem 1.75rem 0.8rem;
+  color: var(--cw-text-primary, #e8e4d8);
+  border-bottom: 0;
+  font-family: var(--cw-font-display, 'Cinzel', serif);
+  font-weight: 800;
+}
+
+.MuiDialog-root .MuiDialogContent-root {
+  padding: 0.7rem 1.75rem 1.25rem;
+  scrollbar-color: rgba(189, 165, 109, 0.5) rgba(255, 255, 255, 0.03);
+}
+
+.MuiDialog-root .MuiDialogActions-root {
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem 1.75rem;
+  border-top: 0;
+}
+
+.MuiDialog-root .MuiInputBase-root,
+.MuiDialog-root .MuiSelect-select {
+  color: #eee7d7;
+}
+
+.MuiDialog-root .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(210, 190, 140, 0.25);
+}
+
+.MuiDialog-root .MuiInputLabel-root,
+.MuiDialog-root .MuiFormControlLabel-label,
+.MuiDialog-root .MuiFormHelperText-root {
+  color: #aaa79f;
+}
+
+@keyframes cw-dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .MuiDialog-root .MuiDialog-paper {
+    animation: none;
+  }
+}
+
+.app-container h1,
+.app-container h2,
+.app-container h3,
+.app-container .MuiTypography-h1,
+.app-container .MuiTypography-h2,
+.app-container .MuiTypography-h3,
+.app-container .MuiTypography-h4,
+.app-container .MuiTypography-h5,
+.app-container .MuiTypography-h6 {
+  color: var(--cw-text-primary);
+  font-family: var(--cw-font-display);
+  letter-spacing: 0.025em;
+}
+
+.app-container :where(.MuiContainer-root, .container-fluid) {
+  min-width: 0;
+}
+
+.app-container .container-fluid.py-4 {
+  width: min(100%, var(--cw-content-max));
+  margin-inline: auto;
+  padding: 2.625rem 2.5rem 4.5rem !important;
+}
+
+.app-container :where(.MuiPaper-root, .MuiCard-root, .card, .cw-surface, .statistics-panel) {
+  color: var(--cw-text-primary);
+  background: var(--cw-prototype-card) !important;
+  border: 1px solid var(--cw-prototype-line) !important;
+  border-radius: var(--cw-radius-lg) !important;
+  box-shadow: var(--cw-prototype-shadow);
+  backdrop-filter: blur(12px);
+}
+
+.app-container .cw-navigation.MuiAppBar-root {
+  background: rgba(8, 10, 9, 0.86) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--cw-prototype-line) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.app-container .MuiCard-root,
+.app-container .card,
+.app-container .cw-surface--interactive {
+  transition:
+    transform var(--cw-duration-base) var(--cw-ease),
+    border-color var(--cw-duration-base) var(--cw-ease),
+    background-color var(--cw-duration-base) var(--cw-ease);
+}
+
+.app-container :where(.MuiCard-root, .card, .cw-surface--interactive):hover {
+  border-color: rgba(210, 190, 140, 0.34) !important;
+}
+
+.app-container .glow {
+  box-shadow: var(--cw-prototype-shadow) !important;
+}
+
+.app-container .glow .card-body,
+.app-container .card-header,
+.app-container .card-body {
+  color: var(--cw-text-primary) !important;
+  background: transparent !important;
+  border-color: var(--cw-prototype-line) !important;
+}
+
+.app-container .text-gradient {
+  color: var(--cw-gold-light) !important;
+  background: none !important;
+  -webkit-text-fill-color: currentColor !important;
+  text-shadow: none !important;
+}
+
+.app-container :where(.MuiButton-root, .btn) {
+  min-height: 2.5rem;
+  border-radius: 0.4375rem;
+  font-weight: 760;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.app-container :where(.MuiButton-containedPrimary, .btn-primary, .btn-buy) {
+  color: #11130f !important;
+  background: linear-gradient(#a38f5b, #75633b) !important;
+  border: 1px solid #b39b63 !important;
+  box-shadow: none !important;
+}
+
+.app-container :where(.MuiButton-containedPrimary, .btn-primary, .btn-buy):hover:not(:disabled) {
+  color: #0b0d0c !important;
+  background: linear-gradient(#c8b477, #8d7847) !important;
+  border-color: var(--cw-gold-light) !important;
+}
+
+.app-container :where(.MuiButton-outlined, .btn-outline-primary, .btn-outline-secondary, .btn-secondary) {
+  color: var(--cw-text-primary) !important;
+  background: rgba(17, 20, 17, 0.72) !important;
+  border: 1px solid var(--cw-prototype-line) !important;
+}
+
+.app-container :where(.MuiButton-outlined, .btn-outline-primary, .btn-outline-secondary, .btn-secondary):hover:not(:disabled) {
+  color: var(--cw-gold-light) !important;
+  background: rgba(29, 33, 29, 0.9) !important;
+  border-color: rgba(211, 188, 131, 0.45) !important;
+}
+
+.app-container :where(.MuiOutlinedInput-root, .MuiInputBase-root, .form-control, .form-select, input, select, textarea) {
+  color-scheme: dark;
+  color: var(--cw-text-primary);
+  background-color: rgba(11, 13, 12, 0.68) !important;
+  border-color: var(--cw-prototype-line) !important;
+  border-radius: var(--cw-radius-sm) !important;
+}
+
+.app-container select option,
+.app-container select optgroup {
+  color: var(--cw-text-primary);
+  background: #111411;
+}
+
+.app-container select option:checked {
+  color: var(--cw-gold-light);
+  background: #29271f;
+}
+
+.app-container select option:disabled {
+  color: var(--cw-text-muted);
+  background: #0c0f0d;
+}
+
+.MuiMenu-paper .MuiMenuItem-root,
+.MuiPopover-paper .MuiMenuItem-root {
+  color: var(--cw-text-secondary);
+  background: #111411;
+}
+
+.MuiMenu-paper .MuiMenuItem-root:hover,
+.MuiPopover-paper .MuiMenuItem-root:hover,
+.MuiMenu-paper .MuiMenuItem-root.Mui-selected,
+.MuiPopover-paper .MuiMenuItem-root.Mui-selected {
+  color: var(--cw-gold-light);
+  background: rgba(189, 165, 109, 0.1);
+}
+
+.app-container .MuiOutlinedInput-notchedOutline {
+  border-color: var(--cw-prototype-line) !important;
+}
+
+.app-container .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline,
+.app-container .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline,
+.app-container :where(.form-control, .form-select, input, select, textarea):focus {
+  border-color: var(--cw-gold) !important;
+  box-shadow: 0 0 0 2px rgba(189, 165, 109, 0.1) !important;
+}
+
+.app-container :where(.MuiInputLabel-root, .MuiFormLabel-root, .text-secondary, .text-muted) {
+  color: var(--cw-text-secondary) !important;
+}
+
+.app-container .MuiTabs-root,
+.app-container .nav-tabs {
+  border-color: var(--cw-prototype-line) !important;
+}
+
+.app-container :where(.MuiTab-root, .nav-link) {
+  color: var(--cw-text-secondary) !important;
+  font-size: 0.72rem;
+  font-weight: 720;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.app-container :where(.MuiTab-root.Mui-selected, .nav-link.active) {
+  color: var(--cw-gold-light) !important;
+}
+
+.app-container .MuiTabs-indicator {
+  background-color: var(--cw-gold) !important;
+}
+
+.app-container :where(.MuiChip-root, .badge) {
+  color: var(--cw-text-secondary) !important;
+  background: rgba(11, 13, 12, 0.64) !important;
+  border: 1px solid var(--cw-prototype-line) !important;
+}
+
+.app-container :where(.MuiTableCell-root, .table th, .table td) {
+  color: var(--cw-text-primary);
+  border-color: rgba(210, 190, 140, 0.09) !important;
+}
+
+.app-container :where(.MuiTableHead-root, .table thead) {
+  background: rgba(189, 165, 109, 0.055) !important;
+}
+
+.app-container :where(.MuiTableCell-head, .table th) {
+  color: var(--cw-text-secondary) !important;
+  font-size: 0.7rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.app-container :where(.MuiTableRow-root, .table tbody tr):hover {
+  background: rgba(189, 165, 109, 0.045) !important;
+}
+
+.app-container .MuiLinearProgress-root,
+.app-container .progress {
+  overflow: hidden;
+  background: #0b0d0c !important;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+}
+
+.app-container .MuiLinearProgress-bar,
+.app-container .progress-bar {
+  background: linear-gradient(90deg, var(--cw-gold-dark), var(--cw-gold-light)) !important;
+}
+
+.app-container .MuiCircularProgress-root {
+  color: var(--cw-gold) !important;
+}
+
+.app-container .MuiDialog-paper,
+.app-container .dropdown-menu {
+  color: var(--cw-text-primary);
+  background: rgba(13, 16, 14, 0.98) !important;
+  border: 1px solid var(--cw-prototype-line) !important;
+  box-shadow: var(--cw-prototype-shadow) !important;
+}
+
+.app-container .dropdown-item {
+  color: var(--cw-text-secondary);
+}
+
+.app-container .dropdown-item:hover {
+  color: var(--cw-text-primary);
+  background: var(--cw-bg-hover);
+}
+
+/* Home — the prototype hero, fed by live campaign data. */
+.app-container[data-route-art='home'] .home-page {
+  gap: 2.75rem;
+}
+
+.app-container[data-route-art='home'] .home-hero {
+  min-height: clamp(34rem, calc(100svh - var(--cw-header-height) - 4rem), 54rem);
+  align-items: center;
+  border-bottom: 0;
+}
+
+.app-container[data-route-art='home'] .home-hero__copy {
+  max-width: 46rem;
+}
+
+.app-container[data-route-art='home'] .home-hero h1 {
+  max-width: 15ch;
+  font-size: clamp(3rem, 6vw, 5.25rem);
+  line-height: 1.02;
+  text-shadow: 0 0.375rem 1.875rem #000;
+}
+
+.app-container[data-route-art='home'] .home-hero__action--primary {
+  color: #11130f;
+  background: linear-gradient(#a38f5b, #75633b);
+  border-color: #b39b63;
+}
+
+.app-container[data-route-art='home'] .home-map-preview__canvas {
+  background: rgba(7, 10, 8, 0.8);
+}
+
+/* Statistics, chronicle and ranking surfaces. */
+.app-container .statistics-page {
+  min-height: calc(100vh - var(--cw-header-height));
+  padding: 2.625rem 2rem 4.5rem;
+}
+
+.app-container .statistics-shell {
+  width: min(100%, var(--cw-content-max));
+}
+
+.app-container .statistics-header {
+  min-height: 9rem;
+  padding: 2rem 1.5rem;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--cw-prototype-line);
+  border-radius: 0;
+}
+
+.app-container .statistics-title-icon {
+  color: var(--cw-gold) !important;
+  background: rgba(189, 165, 109, 0.08) !important;
+  border-color: rgba(189, 165, 109, 0.34) !important;
+}
+
+.app-container .statistics-header h1 {
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+}
+
+.app-container .statistics-tabs {
+  margin-bottom: 1.25rem;
+  background: var(--cw-prototype-glass);
+  border-color: var(--cw-prototype-line);
+}
+
+.app-container .statistics-tab {
+  color: var(--cw-text-secondary);
+  border-color: var(--cw-prototype-line);
+}
+
+.app-container .statistics-tab-active {
+  color: var(--cw-gold-light);
+  background: rgba(189, 165, 109, 0.07);
+  box-shadow: inset 0 -2px 0 var(--cw-gold);
+}
+
+.app-container :where(.statistics-title-icon svg, .statistics-panel-title svg) {
+  color: var(--cw-gold) !important;
+}
+
+.app-container .statistics-summary-item {
+  background: var(--cw-prototype-card);
+  border: 1px solid var(--cw-prototype-line);
+  border-left-color: var(--cw-gold-dark);
+}
+
+.app-container .statistics-summary-item > svg,
+.app-container :where(.statistics-summary-value, .statistics-value-badge, .statistics-rating-elo) {
+  color: var(--cw-gold-light) !important;
+}
+
+.app-container :where(.statistics-value-badge, .statistics-action-button) {
+  background: rgba(189, 165, 109, 0.08);
+  border-color: rgba(189, 165, 109, 0.34);
+}
+
+.app-container .statistics-rating-patches button.is-active {
+  color: var(--cw-gold-light) !important;
+  background: rgba(189, 165, 109, 0.12) !important;
+  box-shadow: inset 0 -2px 0 var(--cw-gold) !important;
+}
+
+.app-container .statistics-bar-fill,
+.app-container .statistics-loader {
+  border-top-color: var(--cw-gold);
+  background: var(--cw-gold);
+}
+
+/* Live map, clans and war journal. */
+.app-container .clans-page,
+.app-container .clan-view-page,
+.app-container .wars-page,
+.app-container .war-detail-page,
+.app-container .map-page,
+.app-container .admin-sync-page {
+  width: min(100%, var(--cw-content-max));
+  padding-top: 2.625rem !important;
+  padding-bottom: 4.5rem !important;
+}
+
+.app-container .clans-page__header {
+  min-height: 13rem;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--cw-text-primary) !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--cw-prototype-line) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-align: left !important;
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.app-container .clans-page__header > img {
+  display: none;
+}
+
+.app-container .clans-page__header h1 {
+  color: var(--cw-text-primary) !important;
+  font-size: clamp(2.75rem, 5vw, 4.5rem);
+  text-shadow: 0 0.375rem 1.875rem #000 !important;
+}
+
+.app-container .clans-page__card {
+  border-left: 3px solid var(--cw-gold-dark) !important;
+}
+
+.app-container .clans-page__header .MuiButton-root {
+  color: #11130f !important;
+  background: linear-gradient(#a38f5b, #75633b) !important;
+  border: 1px solid #b39b63 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.app-container :where(.wars-page, .war-detail-page) > .MuiBox-root:first-child h1,
+.app-container :where(.wars-page, .war-detail-page) > h1 {
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+}
+
+.app-container .wars-page > .wars-prototype-header {
+  min-height: 10.5rem;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.7rem;
+  border-bottom: 1px solid var(--cw-prototype-line);
+}
+
+.app-container .wars-prototype-header h1 {
+  margin: 0.3rem 0 0.45rem;
+  font-size: clamp(2.5rem, 4vw, 3.5rem) !important;
+  line-height: 1;
+  text-shadow: 0 0.4rem 2rem #000;
+}
+
+.app-container .wars-prototype-header__eyebrow {
+  margin: 0;
+  color: var(--cw-gold);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.app-container .wars-prototype-header__subtitle {
+  margin: 0;
+  color: var(--cw-text-secondary);
+  font-size: 0.96rem;
+}
+
+.app-container .wars-prototype-header > .MuiButton-root {
+  flex: 0 0 auto;
+  margin-bottom: 0.1rem;
+}
+
+.app-container .map-page > .MuiBox-root:first-child {
+  min-height: 10.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--cw-prototype-line);
+}
+
+.app-container .map-page > .MuiBox-root:first-child h1 {
+  margin-bottom: 0.45rem;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 1;
+  text-shadow: 0 0.4rem 2rem #000;
+}
+
+.app-container .war-detail-page > .MuiBox-root:first-child {
+  padding: 1.25rem 0;
+}
+
+.app-container .strategic-map-shell,
+.app-container .territory-summary,
+.app-container .clan-header,
+.app-container .members-section,
+.app-container .clan-assets-section,
+.app-container .clan-war-history,
+.app-container .clan-section-tabs {
+  background: var(--cw-prototype-card) !important;
+  border-color: var(--cw-prototype-line) !important;
+  border-radius: var(--cw-radius-lg) !important;
+  box-shadow: var(--cw-prototype-shadow);
+}
+
+.app-container .clan-header {
+  border-left-color: var(--cw-gold) !important;
+}
+
+.app-container .clan-section-tabs .MuiTab-root.Mui-selected,
+.app-container .members-tabs .MuiTab-root.Mui-selected,
+.app-container .leader-chip,
+.app-container .stat-number {
+  color: var(--cw-gold-light) !important;
+}
+
+.app-container .stats-table .MuiTableHead-root,
+.app-container .members-tabs .MuiTab-root.Mui-selected {
+  background: rgba(189, 165, 109, 0.08) !important;
+}
+
+.app-container .map-control-button--selected {
+  color: var(--cw-gold-light) !important;
+  border-color: rgba(189, 165, 109, 0.48) !important;
+  background: rgba(189, 165, 109, 0.1) !important;
+}
+
+.app-container .entity-link:hover {
+  color: var(--cw-gold-light);
+}
+
+/* Authentication uses the prototype's centered, restrained dark card. */
+.app-container .auth-page {
+  min-height: calc(100svh - var(--cw-header-height));
+  display: grid;
+  place-items: center;
+  padding: 30px 0;
+}
+
+/* Shop and profile carry the relic-card proportions from the prototype. */
+.app-container[data-route-art='shop'] .shop-header-card,
+.app-container[data-route-art='profile'] .profile-header-card {
+  background-color: rgba(18, 21, 18, 0.74) !important;
+  background-image: linear-gradient(180deg, rgba(18, 21, 18, 0.3), rgba(8, 10, 9, 0.48)) !important;
+  border-color: var(--cw-prototype-line) !important;
+}
+
+.app-container .shop-items-grid,
+.app-container .inventory-grid {
+  gap: 0.875rem !important;
+}
+
+.app-container :where(.shop-item-card, .inventory-item) {
+  overflow: hidden;
+  background: var(--cw-prototype-card) !important;
+  border: 1px solid var(--cw-prototype-line) !important;
+  border-top: 2px solid var(--cw-gold-dark) !important;
+  border-radius: var(--cw-radius-lg) !important;
+  box-shadow: var(--cw-shadow-low);
+}
+
+.app-container :where(.shop-item-card, .inventory-item) .item-image {
+  min-height: 13.5rem;
+  margin: -1px -1px 1rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(189, 165, 109, 0.16), transparent 52%),
+    rgba(8, 10, 9, 0.82);
+}
+
+.app-container .cosmetic-preview--relic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--cw-duration-slow) var(--cw-ease);
+}
+
+.app-container .shop-header-relic {
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 2rem rgba(189, 165, 109, 0.16);
+}
+
+.app-container .shop-toolbar img {
+  filter: sepia(1) saturate(0.72) hue-rotate(355deg) brightness(1.08);
+}
+
+.app-container .shop-empty-relic {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  object-fit: cover;
+  opacity: 0.72;
+  filter: grayscale(0.35);
+}
+
+.app-container :where(.shop-item-card, .inventory-item):hover .cosmetic-preview--relic {
+  transform: scale(1.025);
+}
+
+.app-container :where(.item-name, .price-amount, .balance-amount) {
+  color: var(--cw-gold-light) !important;
+  font-family: var(--cw-font-display);
+}
+
+.app-container .rarity-badge {
+  color: var(--cw-bg-canvas) !important;
+  border: 0 !important;
+}
+
+/* Admin keeps information density while sharing the public material system. */
+.app-container .admin-heading,
+.app-container .admin-section,
+.app-container .admin-health-panel,
+.app-container .admin-season-history,
+.app-container .admin-panel {
+  background: var(--cw-prototype-card) !important;
+  border-color: var(--cw-prototype-line) !important;
+  box-shadow: var(--cw-shadow-low);
+}
+
+.app-container .admin-metric__icon,
+.app-container .admin-link {
+  color: var(--cw-gold) !important;
+}
+
+@media (max-width: 68.75rem) {
+  .app-container[data-route-art='home'] .home-hero {
+    min-height: 38rem;
+  }
+
+  .app-container .statistics-header {
+    min-height: 7rem;
+  }
+}
+
+@media (max-width: 56.25rem) {
+  .app-container .container-fluid.py-4 {
+    padding-inline: 1.5rem !important;
+  }
+
+  .app-container::before {
+    background-position: 62% top;
+  }
+}
+
+@media (max-width: 37.5rem) {
+  .app-container::before {
+    background-image:
+      linear-gradient(var(--cw-route-overlay), var(--cw-route-overlay)),
+      var(--cw-route-art);
+    background-position: 58% top;
+  }
+
+  .app-container .container-fluid.py-4 {
+    padding: 1.5rem 1rem 3rem !important;
+  }
+
+  .app-container[data-route-art='home'] .home-hero {
+    min-height: calc(100svh - var(--cw-header-height) - 2rem);
+  }
+
+  .app-container[data-route-art='home'] .home-hero h1 {
+    font-size: clamp(2.6rem, 13vw, 3.5rem);
+  }
+
+  .app-container .statistics-page {
+    padding: 1.5rem 0.75rem 3rem;
+  }
+
+  .app-container .statistics-header {
+    min-height: auto;
+    padding: 1.5rem 0.5rem;
+  }
+
+  .app-container .statistics-header h1 {
+    font-size: clamp(2rem, 10vw, 2.75rem);
+  }
+
+  .app-container :where(.shop-item-card, .inventory-item) .item-image {
+    min-height: 12rem;
+  }
+
+  .app-container .strategic-map-canvas {
+    height: clamp(17rem, 44dvh, 22.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-container::before {
+    transition: none;
+  }
+}

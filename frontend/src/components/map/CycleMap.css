@@ -1,0 +1,71 @@
+.cycle-map-marker circle { fill: #141714; stroke: #dcc17b; stroke-width: 3px; vector-effect: non-scaling-stroke; }
+.cycle-map-marker text { fill: #f5e9bf; font-size: 50px; font-weight: 700; paint-order: stroke; stroke: #141714; stroke-width: 5px; }
+.cycle-map-marker .cycle-map-movement { fill: #a4e4c2; font-size: 42px; }
+.cycle-map-marker .cycle-map-interception { fill: #ffb4a9; }
+.cycle-map-marker .cycle-map-status-label { font-size: 42px; fill: #e8e4d8; }
+.cycle-map-defense circle { stroke: #a8c4b1; }
+.cycle-map-neutral_claim circle { stroke: #d3bc83; }
+.cycle-map-completed circle { stroke: #97998f; }
+.cycle-map-attack line { stroke: #ec9f85; stroke-width: 3; vector-effect: non-scaling-stroke; }
+.cycle-map-attack path { fill: #ec9f85; stroke: #141714; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.cycle-map-attack .cycle-map-sea-attack { stroke-dasharray: 7 5; }
+.cycle-map-attack .cycle-map-label-leader { stroke-width: 1; opacity: .65; }
+.cycle-map-route-label, .cycle-map-help-label { font-size: 46px; font-weight: 700; fill: #f3d6c9; paint-order: stroke; stroke: #101510; stroke-width: 8px; stroke-linejoin: round; }
+.cycle-map-help-label { fill: #b8ebc9; }
+.cycle-map-battle-heading { display: flex; align-items: center; gap: 10px; color: #d3bc83; }
+.cycle-map-battle-heading div { display: grid; gap: 4px; min-width: 0; overflow-wrap: anywhere; }
+.cycle-map-battle-heading span { color: #e8e4d8; font-size: 17px; }
+.cycle-map-owner, .cycle-map-phase { color: #bdbdb3; line-height: 1.6; }
+.cycle-map-owner strong { color: #e8e4d8; }
+.cycle-map-scores li { border-top: 1px solid #484638; padding: 10px 0; align-items: center; }
+.cycle-map-scores li > div { display: grid; gap: 4px; }
+.cycle-map-role { font-size: 12px; color: #d3bc83; }
+.cycle-map-scores small { color: #bdbdb3; }
+.cycle-map-score { font-size: 20px; font-variant-numeric: tabular-nums; }
+.cycle-map-help-request { display: flex; align-items: center; gap: 10px; background: #a8c4b114; border-left: 3px solid #a8c4b1; padding: 12px; margin: 10px 0; color: #c6e2cf; }
+.cycle-map-dispatch { border-block: 1px solid #484638; padding: 10px 0; margin: 12px 0; color: #c6e2cf; }
+.cycle-map-dispatch p { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 6px 0; }
+.cycle-map-dispatch svg { width: 18px; height: 18px; }
+.cycle-map-legend { display: flex; flex-wrap: wrap; gap: 12px 24px; padding: 12px 0; color: #bdbdb3; font-size: 13px; }
+.cycle-map-legend span { display: inline-flex; gap: 7px; align-items: center; }
+.cycle-map-legend svg { width: 18px; height: 18px; }
+.cycle-map-legend .cycle-map-legend-attack { color: #ec9f85; }
+.cycle-map-legend .cycle-map-legend-help { color: #a8c4b1; }
+.cycle-map-attack-detail { display: flex; align-items: flex-start; gap: 8px; line-height: 1.6; color: #bdbdb3; font-size: 13px; }
+.cycle-map-attack-detail > svg { width: 18px; color: #ec9f85; flex-shrink: 0; }
+.cycle-map-panel { margin: 12px 0; padding: 12px 0; border-block: 1px solid #6d6043; font-size: 14px; }
+.cycle-map-scores { list-style: none; margin: 0 0 12px; padding: 0; }
+.cycle-map-scores li { display: flex; justify-content: space-between; gap: 12px; margin: 8px 0; overflow-wrap: anywhere; }
+.cycle-map-action, .cycle-map-panel button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px; margin: 4px 0; max-width: 100%; color: #eed49a; }
+.cycle-map-panel button { background: #29291f; border: 1px solid #b89d59; border-radius: 4px; font: inherit; cursor: pointer; }
+.cycle-map-panel button:disabled { opacity: .55; cursor: default; }
+.cycle-map-command-buttons { display: grid; gap: 8px; margin-top: 16px; }
+.cycle-map-command-buttons button { justify-content: flex-start; color: var(--cw-bg-canvas); background: var(--cw-gold-light); border-color: var(--cw-border-active); font-weight: 600; padding: 10px 14px; }
+.cycle-map-action:focus-visible, .cycle-map-panel button:focus-visible { outline: 2px solid #eed49a; outline-offset: 3px; }
+.cycle-map-economy { padding-block: 12px; }
+.cycle-map-economy h3 { margin: 8px 0; font-size: 14px; }
+.cycle-map-economy p { margin: 8px 0; overflow-wrap: anywhere; }
+.cycle-map-economy small { color: #b9b9b9; }
+.cycle-map-economy dl { display: grid; gap: 8px; margin: 12px 0; }
+.cycle-map-economy dl div { display: flex; justify-content: space-between; gap: 12px; }
+.cycle-map-economy dd { margin: 0; flex-shrink: 0; }
+.cycle-route-land { fill: #303c35; stroke: #8a998f; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.cycle-route-line { fill: none; stroke: #e2c66d; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.cycle-route-point { stroke: #141714; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.cycle-route-origin { fill: #98e1c0; }
+.cycle-route-target { fill: #ffb4a9; }
+.cycle-map-geographic-route .cycle-route-land { fill: none; stroke: none; }
+.cycle-map-geographic-route .cycle-route-line { stroke: #a8d9bd; }
+.cycle-map-geographic-route .cycle-route-arrow, .cycle-map-geographic-route .cycle-route-target { fill: #a8d9bd; }
+.cycle-map-geographic-route[data-state="blocked"] { opacity: .45; }
+.cycle-map-geographic-route[data-state="blocked"] .cycle-route-line { stroke: #ec9f85; stroke-dasharray: 4 5; }
+.cycle-map-geographic-route[data-state^="arrived"] { opacity: .4; }
+.cycle-dispatch-route { position: relative; margin: 16px 0; min-width: 0; }
+.cycle-dispatch-route svg { display: block; width: 100%; height: 240px; background: #141b18; border: 1px solid #484e47; border-radius: 4px; }
+.cycle-dispatch-route svg:not([data-route-drawn]) { position: absolute; visibility: hidden; pointer-events: none; }
+.cycle-dispatch-route svg[data-route-drawn] + .cycle-route-missing { display: none; }
+.cycle-dispatch-route figcaption { margin-top: 8px; overflow-wrap: anywhere; }
+.cycle-dispatch-route ol { display: flex; flex-wrap: wrap; gap: 8px 28px; padding-left: 24px; margin: 8px 0; }
+.cycle-dispatch-route li { padding-right: 8px; }
+.cycle-route-missing { color: #bdbdb3; }
+@media (max-width: 600px) { .cycle-dispatch-route svg { height: 180px; } }

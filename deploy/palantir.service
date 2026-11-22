@@ -1,0 +1,21 @@
+[Unit]
+Description=Palantir Discord bot for bfmeCW
+After=network-online.target clanwar.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=darcks
+Group=darcks
+WorkingDirectory=/home/clanwar/apps/clanwar/current
+EnvironmentFile=/home/clanwar/apps/clanwar/shared/.env
+ExecStart=/home/clanwar/apps/clanwar/current/.venv/bin/python -m app.discord_bot
+Restart=on-failure
+RestartSec=15
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

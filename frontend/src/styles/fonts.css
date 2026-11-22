@@ -1,0 +1,12 @@
+:root {
+  --cw-font-display: "Cinzel", Georgia, serif;
+  --cw-font-ui: "Manrope Variable", "Manrope", "Segoe UI", sans-serif;
+}
+
+.cw-display-type {
+  font-family: var(--cw-font-display);
+}
+
+.cw-tabular {
+  font-variant-numeric: tabular-nums lining-nums;
+}

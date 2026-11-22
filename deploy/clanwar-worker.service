@@ -1,0 +1,21 @@
+[Unit]
+Description=Clan Wars ROTWK campaign worker
+After=network-online.target redis-server.service clanwar.service
+Wants=network-online.target
+Requires=redis-server.service
+
+[Service]
+Type=simple
+User=darcks
+Group=darcks
+WorkingDirectory=/home/clanwar/apps/clanwar/current
+EnvironmentFile=/home/clanwar/apps/clanwar/shared/.env
+ExecStart=/home/clanwar/apps/clanwar/current/.venv/bin/python -m app.worker
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,1122 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.entity-link {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.entity-link:hover {
+  color: #ff6b6b;
+  text-decoration: underline;
+}
+
+.public-profile .info-item:has([data-private-field="email"]),
+.public-profile .info-item:has([data-private-field="balance"]),
+.public-profile #inventory,
+.public-profile #quests,
+.public-profile #settings {
+  display: none !important;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Enhanced Shop Header Styles */
+.shop-header-card {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(40, 40, 40, 0.95));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 72, 72, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Profile Header Card Styles */
+.profile-header-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(40, 40, 40, 0.95));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 72, 72, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  overflow: visible;
+}
+
+/* Social Media Links Styles */
+/* Контейнер соц. сетей */
+.social-media-links {
+  position: absolute !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 10 !important;
+
+  display: flex !important;
+  flex-direction: column !important; /* В колонку */
+  align-items: center !important;
+  gap: 15px !important;
+
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Стили по ID - самый надёжный способ */
+#social-media-container {
+  position: absolute !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 10 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 15px !important;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Общий стиль кнопок */
+.social-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 65px !important;   /* увеличил */
+  height: 65px !important;  /* увеличил */
+  border-radius: 50% !important;
+  text-decoration: none !important;
+  color: white !important;
+  font-size: 30px !important; /* увеличил иконку */
+  transition: all 0.3s ease !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4) !important;
+  position: relative !important;
+  border: 3px solid transparent !important;
+}
+
+.social-link:hover {
+  transform: translateY(-5px) scale(1.15) !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5) !important;
+  color: white !important;
+  text-decoration: none !important;
+}
+
+/* Telegram */
+.social-link.telegram {
+  background: linear-gradient(135deg, #0088cc 0%, #00a8ff 50%, #0088cc 100%) !important;
+  border-color: #0088cc !important;
+  box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4) !important;
+}
+.social-link.telegram:hover {
+  background: linear-gradient(135deg, #0077b3 0%, #0099e6 50%, #0077b3 100%) !important;
+  border-color: #0077b3 !important;
+  box-shadow: 0 12px 35px rgba(0, 136, 204, 0.8) !important;
+}
+
+/* Twitch */
+.social-link.twitch {
+  background: linear-gradient(135deg, #9146ff 0%, #a855f7 50%, #9146ff 100%) !important;
+  border-color: #9146ff !important;
+  box-shadow: 0 8px 25px rgba(145, 70, 255, 0.4) !important;
+}
+.social-link.twitch:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #9333ea 50%, #7c3aed 100%) !important;
+  border-color: #7c3aed !important;
+  box-shadow: 0 12px 35px rgba(145, 70, 255, 0.8) !important;
+}
+
+/* YouTube */
+.social-link.youtube {
+  background: linear-gradient(135deg, #ff0000 0%, #ff4444 50%, #ff0000 100%) !important;
+  border-color: #ff0000 !important;
+  box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4) !important;
+}
+.social-link.youtube:hover {
+  background: linear-gradient(135deg, #cc0000 0%, #ff2222 50%, #cc0000 100%) !important;
+  border-color: #cc0000 !important;
+  box-shadow: 0 12px 35px rgba(255, 0, 0, 0.8) !important;
+}
+
+/* Стили по ID для иконок - самый надёжный способ */
+#social-media-container .social-link.telegram {
+  background: linear-gradient(135deg, #0088cc 0%, #00a8ff 50%, #0088cc 100%) !important;
+  border-color: #0088cc !important;
+  box-shadow: 0 8px 25px rgba(0, 136, 204, 0.4) !important;
+  color: white !important;
+}
+#social-media-container .social-link.telegram:hover {
+  background: linear-gradient(135deg, #0077b3 0%, #0099e6 50%, #0077b3 100%) !important;
+  border-color: #0077b3 !important;
+  box-shadow: 0 12px 35px rgba(0, 136, 204, 0.8) !important;
+}
+
+#social-media-container .social-link.twitch {
+  background: linear-gradient(135deg, #9146ff 0%, #a855f7 50%, #9146ff 100%) !important;
+  border-color: #9146ff !important;
+  box-shadow: 0 8px 25px rgba(145, 70, 255, 0.4) !important;
+  color: white !important;
+}
+#social-media-container .social-link.twitch:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #9333ea 50%, #7c3aed 100%) !important;
+  border-color: #7c3aed !important;
+  box-shadow: 0 12px 35px rgba(145, 70, 255, 0.8) !important;
+}
+
+#social-media-container .social-link.youtube {
+  background: linear-gradient(135deg, #ff0000 0%, #ff4444 50%, #ff0000 100%) !important;
+  border-color: #ff0000 !important;
+  box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4) !important;
+  color: white !important;
+}
+#social-media-container .social-link.youtube:hover {
+  background: linear-gradient(135deg, #cc0000 0%, #ff2222 50%, #cc0000 100%) !important;
+  border-color: #cc0000 !important;
+  box-shadow: 0 12px 35px rgba(255, 0, 0, 0.8) !important;
+}
+
+/* LIVE бейдж */
+.live-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: linear-gradient(135deg, #ff4444 0%, #ff6666 50%, #ff4444 100%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 2px solid white;
+  box-shadow: 0 4px 12px rgba(255, 68, 68, 0.6);
+  animation: pulse 2s infinite;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* LIVE бейдж по ID - самый надёжный способ */
+#social-media-container .live-badge {
+  position: absolute !important;
+  top: -10px !important;
+  right: -10px !important;
+  background: linear-gradient(135deg, #ff4444 0%, #ff6666 50%, #ff4444 100%) !important;
+  color: white !important;
+  font-size: 12px !important;
+  font-weight: bold !important;
+  padding: 3px 8px !important;
+  border-radius: 12px !important;
+  border: 2px solid white !important;
+  box-shadow: 0 4px 12px rgba(255, 68, 68, 0.6) !important;
+  animation: pulse 2s infinite !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(255, 68, 68, 0.6);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(255, 68, 68, 0.9);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(255, 68, 68, 0.6);
+    transform: scale(1);
+  }
+}
+
+.shop-header-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 72, 72, 0.03) 50%, transparent 70%);
+  pointer-events: none;
+}
+
+
+
+/* Shop Category Dropdown Styles */
+.dropdown-menu {
+  background: linear-gradient(135deg, rgba(26, 26, 26, 0.95), rgba(40, 40, 40, 0.95));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 72, 72, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-item {
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background: linear-gradient(135deg, rgba(255,72,72,0.1), rgba(255,107,107,0.1));
+  color: var(--text-color);
+}
+
+.dropdown-item:active {
+  background: linear-gradient(135deg, rgba(255,72,72,0.15), rgba(255,107,107,0.15));
+  color: var(--text-color);
+}
+
+.form-check-input {
+  background-color: rgba(255, 72, 72, 0.1);
+  border-color: rgba(255, 72, 72, 0.3);
+}
+
+.form-check-input:checked {
+  background-color: #FF4848;
+  border-color: #FF4848;
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 72, 72, 0.25);
+}
+
+/* Profile Statistics Styles */
+.main-stats-container {
+  background: linear-gradient(135deg, var(--darker-bg, #1a1a1a) 0%, var(--card-bg, #2a2a2a) 100%);
+  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.1));
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
+}
+
+.main-stats-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.main-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.main-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.main-stat-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.main-stat-card.wins {
+  border-left: 3px solid #4CAF50;
+}
+
+.main-stat-card.losses {
+  border-left: 3px solid #FF4848;
+}
+
+.main-stat-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  color: var(--text-secondary, #929292);
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.main-stat-card.wins .main-stat-icon {
+  color: #4CAF50;
+  background: rgba(76, 175, 80, 0.2);
+}
+
+.main-stat-card.losses .main-stat-icon {
+  color: #FF4848;
+  background: rgba(255, 72, 72, 0.2);
+}
+
+.main-stat-content {
+  flex: 1;
+}
+
+.main-stat-number {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-primary, #ffffff);
+  margin-bottom: 0.25rem;
+}
+
+.main-stat-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary, #929292);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.main-stats-progress {
+  margin-top: 1rem;
+}
+
+.main-stats-progress .progress-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+}
+
+.main-stats-progress .progress-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.main-stats-progress .progress-fill.wins {
+  background: linear-gradient(90deg, #4CAF50, #66BB6A);
+}
+
+.main-stats-progress .progress-fill.losses {
+  background: linear-gradient(90deg, #FF4848, #FF6B6B);
+}
+
+.factions-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.factions-count {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #929292);
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.factions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.faction-stat-card {
+  background: linear-gradient(135deg, var(--darker-bg, #1a1a1a) 0%, var(--card-bg, #2a2a2a) 100%);
+  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.1));
+  border-radius: 8px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.faction-stat-card:hover {
+  border-color: #FF4848;
+  background: linear-gradient(135deg, var(--card-bg, #2a2a2a) 0%, var(--darker-bg, #1a1a1a) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(255, 72, 72, 0.2);
+}
+
+.faction-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.faction-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.faction-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  flex-shrink: 0;
+}
+
+.faction-details {
+  flex: 1;
+}
+
+.faction-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary, #ffffff);
+  margin-bottom: 0.25rem;
+}
+
+.faction-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.games-count {
+  color: var(--text-secondary, #929292);
+  font-weight: 600;
+}
+
+.winrate-badge {
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-weight: 800;
+  font-size: 0.7rem;
+  border: 1px solid;
+}
+
+.winrate-badge.winrate-high {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.winrate-badge.winrate-medium {
+  background: rgba(255, 193, 7, 0.2);
+  color: #FFC107;
+  border-color: #FFC107;
+}
+
+.winrate-badge.winrate-low {
+  background: rgba(255, 72, 72, 0.2);
+  color: #FF4848;
+  border-color: #FF4848;
+}
+
+.faction-summary {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.summary-stat {
+  text-align: center;
+  min-width: 40px;
+}
+
+.summary-stat .stat-number {
+  font-weight: 900;
+  font-size: 1.1em;
+  margin-bottom: 0.1rem;
+}
+
+.summary-stat .stat-label {
+  font-size: 0.6em;
+  color: #929292;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.faction-progress {
+  margin-top: 0.75rem;
+}
+
+.progress-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+}
+
+.progress-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.progress-fill.wins {
+  background: linear-gradient(90deg, #4CAF50, #66BB6A);
+}
+
+.progress-fill.losses {
+  background: linear-gradient(90deg, #FF4848, #FF6B6B);
+}
+
+.recent-matches-container {
+  background: linear-gradient(135deg, var(--darker-bg, #1a1a1a) 0%, var(--card-bg, #2a2a2a) 100%);
+  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.1));
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.recent-matches-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.matches-count {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #929292);
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.recent-matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.recent-match-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.1));
+  border-radius: 6px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.recent-match-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.recent-match-card.win {
+  border-left: 3px solid #4CAF50;
+}
+
+.recent-match-card.loss {
+  border-left: 3px solid #FF4848;
+}
+
+.match-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.match-result-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.recent-match-card.win .match-result-icon {
+  color: #4CAF50;
+  background: rgba(76, 175, 80, 0.2);
+}
+
+.recent-match-card.loss .match-result-icon {
+  color: #FF4848;
+  background: rgba(255, 72, 72, 0.2);
+}
+
+.match-date {
+  font-size: 0.75rem;
+  color: var(--text-secondary, #929292);
+  font-weight: 600;
+}
+
+.match-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.match-factions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.faction-vs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.faction-icon-small {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+}
+
+.vs-separator {
+  font-size: 0.7rem;
+  color: var(--text-secondary, #929292);
+  font-weight: 800;
+  padding: 0.1rem 0.3rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.match-info {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.match-map {
+  font-size: 0.7rem;
+  color: var(--text-secondary, #929292);
+  text-align: right;
+}
+
+/* LIVE Match Players Styles */
+.match-players {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  gap: 0.5rem;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.player-info:last-child {
+  justify-content: flex-end;
+}
+
+.player-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 72, 72, 0.3);
+}
+
+.player-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.player-faction {
+  font-size: 0.65rem;
+  color: var(--text-secondary, #929292);
+  font-weight: 500;
+}
+
+.player-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary, #ffffff);
+}
+
+.player-winrate {
+  font-size: 0.7rem;
+  color: var(--text-secondary, #929292);
+  font-weight: 600;
+}
+
+.vs-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+}
+
+/* Стили для системы заданий */
+.quests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.quest-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.1));
+  border-radius: 8px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.quest-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.quest-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.quest-title h6 {
+  color: var(--text-primary, #ffffff);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.quest-description {
+  color: var(--text-secondary, #929292);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.quest-rewards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.reward-item {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+}
+
+.quest-progress {
+  margin-bottom: 1rem;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.progress-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+}
+
+.expires-text {
+  font-size: 0.75rem;
+  color: var(--text-secondary, #929292);
+}
+
+.progress {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.quest-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.quest-actions .btn {
+  min-width: 120px;
+}
+
+/* Стили для вкладок заданий */
+.nav-tabs {
+  border-bottom: 1px solid var(--card-border, rgba(255, 255, 255, 0.1));
+}
+
+.nav-tabs .nav-link {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary, #929292);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--text-primary, #ffffff);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--text-primary, #ffffff);
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid var(--primary-color, #007bff);
+}
+
+.tab-content {
+  margin-top: 1rem;
+}
+
+/* Clan Info Item Base Styles */
+.clan-info-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.clan-info-item .clan-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary, #ffffff);
+  margin-bottom: 0.5rem;
+}
+
+.clan-info-item .clan-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #929292);
+  line-height: 1.4;
+}
+
+/* Clan Info Item Clickable Styles */
+.clan-info-item.clickable {
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: -1rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+
+.clan-info-item.clickable::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 72, 72, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.clan-info-item.clickable:hover {
+  background: linear-gradient(135deg, rgba(255, 72, 72, 0.08), rgba(255, 107, 107, 0.08));
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(255, 72, 72, 0.25);
+  border: 1px solid rgba(255, 72, 72, 0.3);
+}
+
+.clan-info-item.clickable:hover::before {
+  left: 100%;
+}
+
+.clan-info-item.clickable:active {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 4px 15px rgba(255, 72, 72, 0.2);
+  transition: all 0.1s ease;
+}
+
+/* Ladder Page Styles */
+.stat-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 72, 72, 0.1) 0%, rgba(255, 107, 107, 0.05) 100%);
+  border: 1px solid rgba(255, 72, 72, 0.2);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 72, 72, 0.2);
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.live-matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.live-match-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.1));
+  border-radius: 6px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  border-left: 3px solid #FF4848;
+}
+
+.live-match-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.live-badge {
+  background: linear-gradient(45deg, #ff6b6b, #ff4848);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+.live-match-card .match-result-icon {
+  color: #FF4848;
+  background: rgba(255, 72, 72, 0.2);
+}
+
+/* Новые стили для LIVE матчей */
+.match-players {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.player-avatar-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.player-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.player-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.player-faction {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.player-name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.player-winrate {
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.vs-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1rem;
+  flex-shrink: 0;
+}
+
+/* Для второго игрока - зеркальное отображение */
+.player-info:last-child .player-avatar-container {
+  flex-direction: row-reverse;
+}
+
+.player-info:last-child .player-details {
+  text-align: right;
+  align-items: flex-end;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.match-id {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-family: monospace;
+}
+
+
+
+.scheduler-status {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 72, 72, 0.1);
+}

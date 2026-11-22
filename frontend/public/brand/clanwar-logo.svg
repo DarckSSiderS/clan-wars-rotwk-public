@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 112" role="img" aria-labelledby="title desc">
+  <title id="title">BFME ClanWars</title>
+  <desc id="desc">Крепость и скрещённые клинки в золотом кольце</desc>
+  <g fill="none" stroke="#c9ad6a" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="54" cy="56" r="42" stroke-width="3"/>
+    <circle cx="54" cy="56" r="34" stroke="#6f6041"/>
+    <path d="M28 77 76 29M32 25l48 54M25 81l9-2-7-7M82 82l-9-2 7-7M24 22l9 2-7 7M81 25l-9 2 7 7" stroke-width="3"/>
+    <path d="M42 72V45h7v-9h10v9h7v27M37 72h34M48 72V59h12v13" fill="#121612" stroke-width="3"/>
+    <path d="M45 45h18" stroke-width="2"/>
+  </g>
+  <g fill="#e7dcc0" font-family="Cinzel, Georgia, serif">
+    <text x="112" y="49" font-size="28" font-weight="700" letter-spacing="3">BFME</text>
+    <text x="112" y="79" fill="#c9ad6a" font-size="23" font-weight="600" letter-spacing="2">CLANWARS</text>
+  </g>
+  <path d="M113 57h202" stroke="#51472f"/>
+</svg>

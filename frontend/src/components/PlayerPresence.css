@@ -1,0 +1,60 @@
+.player-presence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.55rem;
+}
+
+.player-presence-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  color: var(--cw-text-muted, #979d95);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.player-presence-badge i {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #646a64;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+}
+
+.player-presence-badge.is-online {
+  color: #8fc394;
+}
+
+.player-presence-badge.is-online i {
+  background: #65b774;
+  box-shadow: 0 0 0 3px rgba(101, 183, 116, 0.14);
+}
+
+.player-presence .MuiButton-root {
+  min-height: 1.75rem;
+  padding: 0.2rem 0.45rem;
+  color: var(--cw-gold-light, #d3bd84);
+  font-size: 0.7rem;
+}
+
+.player-presence__message {
+  width: 100%;
+  color: #8fc394;
+  font-size: 0.72rem;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.player-presence__message.is-error {
+  color: #d8897d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .player-presence-badge.is-online i {
+    box-shadow: none;
+  }
+}

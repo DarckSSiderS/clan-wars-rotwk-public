@@ -1,0 +1,41 @@
+// Proper names and compact controls; original ability prose remains explicitly marked as Russian.
+const names = {
+  aragorn: ['Aragorn', 'Aragorn'], boromir: ['Boromir', 'Boromir'], faramir: ['Faramir', 'Faramir'], gandalf: ['Gandalf', 'Gandalf'],
+  beregond: ['Beregond', 'Beregond'], imrahil: ['Imrahil', 'Imrahil'], pippin: ['Pippin', 'Pippin'],
+  gondorFighter: ['Gondor soldier', 'Soldat Gondors'], gondorBatteringRam: ['Battering ram', 'Rammbock'], dolAmrothKnights: ['Dol Amroth riders', 'Reiter Dol Amroths'],
+  gondorSpearmen: ['Gondor spearmen', 'Speerträger Gondors'], pelargirSpearmen: ['Pelargir spearmen', 'Speerträger Pelargirs'],
+  gondorArchers: ['Gondor archers', 'Bogenschützen Gondors'], morthondBowmen: ['Morthond bowmen', 'Bogenschützen Morthonds'], ringloSwordsmen: ['Ringló swordsmen', 'Schwertkämpfer des Ringló'],
+  denethorSpearmen: ["Steward's spearmen", 'Speerträger des Truchsessen'], denethorArchers: ["Steward's archers", 'Bogenschützen des Truchsessen'],
+  gondorKnights: ['Gondor knights', 'Ritter Gondors'], amrothKnights: ['Amroth knights', 'Ritter Amroths'], ithilienRangers: ['Ithilien rangers', 'Waldläufer Ithiliens'],
+  denethorSoldiers: ["Steward's soldiers", 'Soldaten des Truchsessen'], citadelGuards: ['Citadel guards', 'Wachen der Zitadelle'],
+  gondorBuilder: ['Gondor builder', 'Baumeister Gondors'], gondorTrebuchet: ['Trebuchet', 'Trebuchet'], menWallHub: ['Wall hub', 'Mauerturm'], menWallHubAI: ['AI wall hub', 'KI-Mauerturm'],
+  gondorBarracks: ['Barracks', 'Kaserne'], gondorStable: ['Stable', 'Stall'], menFortress: ['Fortress', 'Festung'], menFort: ['Small fortress', 'Kleine Festung'],
+  gondorForge: ['Forge', 'Schmiede'], gondorRangersCamp: ['Ranger camp', 'Waldläuferlager'], gondorWorkshop: ['Siege workshop', 'Belagerungswerkstatt'],
+  gondorMarketPlace: ['Marketplace', 'Marktplatz'], gondorStatue: ['Hero statue', 'Heldenstatue'], gondorArcherRange: ['Archery range', 'Schießstand'],
+  gondorFarm: ['Gondor farm', 'Bauernhof Gondors'], gondorWell: ['Well', 'Brunnen'], gondorBattleTower: ['Battle tower', 'Schlachtturm'],
+  theoden: ['Théoden', 'Théoden'], eomer: ['Éomer', 'Éomer'], eowyn: ['Éowyn', 'Éowyn'], rohirrim: ['Rohirrim', 'Rohirrim'], rohanFarm: ['Rohan farm', 'Bauernhof Rohans'],
+  aranarth: ['Aranarth', 'Aranarth'], araphant: ['Araphant', 'Araphant'], arvedui: ['Arvedui', 'Arvedui'], carthaen: ['Carthaen', 'Carthaen'],
+  malbeth: ['Malbeth', 'Malbeth'], skokka: ['Skokka Brandybuck', 'Skokka Brandybock'], arnorSoldier: ['Arnor soldier', 'Soldat Arnors'],
+  legolasEnnorath: ['Legolas', 'Legolas'], dainEnnorath: ['Dáin', 'Dáin'], orcWarrior: ['Orc warrior', 'Ork-Krieger'],
+};
+const controls = {
+  'Двойные клинки': ['Dual blades', 'Zwei Klingen'], 'Камень': ['Stone', 'Stein'],
+  'Верхом': ['Mounted', 'Beritten'], 'Меч': ['Sword', 'Schwert'], 'Лук': ['Bow', 'Bogen'], 'Меч и щит': ['Sword and shield', 'Schwert und Schild'],
+  'Король': ['King', 'König'], 'Походный': ['Wanderer', 'Wanderer'], 'Элессар': ['Elessar', 'Elessar'],
+  'Страж': ['Guard', 'Wache'], 'Ветеран': ['Veteran', 'Veteran'], 'Ветераны': ['Veterans', 'Veteranen'], 'Капитан': ['Captain', 'Hauptmann'],
+  'Князь': ['Prince', 'Fürst'], 'Белый Лебедь': ['White Swan', 'Weißer Schwan'], 'Путник': ['Traveller', 'Reisender'],
+  'Арсенал': ['Arsenal', 'Arsenal'], 'Башня': ['Tower', 'Turm'], 'Вождь': ['Chieftain', 'Häuptling'], 'Всадник': ['Rider', 'Reiter'],
+  'Гарнизон': ['Garrison', 'Garnison'], 'Готова': ['Completed', 'Fertiggestellt'], 'Действует': ['Active', 'Aktiv'],
+  'Дернхельм': ['Dernhelm', 'Dernhelm'], 'Доспех': ['Armoured', 'Gepanzert'], 'Железностоп': ['Ironfoot', 'Eisenfuß'],
+  'Копейщик': ['Spearman', 'Speerträger'], 'Лесной принц': ['Woodland prince', 'Waldprinz'], 'Линейный воин': ['Soldier', 'Soldat'],
+  'Лучник': ['Archer', 'Bogenschütze'], 'Маршал': ['Marshal', 'Marschall'], 'Медусельд': ['Meduseld', 'Meduseld'],
+  'Мечник': ['Swordsman', 'Schwertkämpfer'], 'Монумент': ['Monument', 'Denkmal'], 'Огненная': ['Fire arrows', 'Feuerpfeile'],
+  'Орк': ['Orc', 'Ork'], 'Повреждена': ['Damaged', 'Beschädigt'], 'Повреждено': ['Damaged', 'Beschädigt'], 'Повреждён': ['Damaged', 'Beschädigt'],
+  'Провидец': ['Seer', 'Seher'], 'Работает': ['Working', 'In Betrieb'], 'Разрушение': ['Collapse', 'Einsturz'],
+  'Рыцарь': ['Knight', 'Ritter'], 'Серый': ['Grey', 'Grau'], 'Следопыт': ['Ranger', 'Waldläufer'], 'Стрелок': ['Marksman', 'Schütze'],
+  'Стрельбище': ['Archery range', 'Schießstand'], 'Строитель': ['Builder', 'Baumeister'], 'Строительство': ['Construction', 'Bau'], 'Стройка': ['Construction', 'Bau'],
+  'Тан': ['Thane', 'Than'], 'Таран': ['Ram', 'Rammbock'], 'Торгует': ['Trading', 'Handel'], 'Требушет': ['Trebuchet', 'Trebuchet'],
+  'Укреплено': ['Fortified', 'Befestigt'], 'Укреплённая': ['Fortified', 'Befestigt'], 'Ферма': ['Farm', 'Bauernhof'], 'Щитовая дева': ['Shieldmaiden', 'Schildmaid'],
+};
+export const entityName = (profile, language) => language === 'ru' ? profile.name : names[profile.id]?.[language === 'de' ? 1 : 0] || profile.id;
+export const controlName = (value, language) => language === 'ru' ? value : controls[value]?.[language === 'de' ? 1 : 0] || value;

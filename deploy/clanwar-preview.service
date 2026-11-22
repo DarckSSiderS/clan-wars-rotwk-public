@@ -1,0 +1,15 @@
+[Unit]
+Description=ClanWar isolated admin preview
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/clanwar/apps/clanwar-preview/current
+ExecStart=/home/clanwar/apps/clanwar/current/.venv/bin/python -m app.admin_preview_backend --root /home/clanwar/apps/clanwar-preview --origin https://bfmecw.online
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

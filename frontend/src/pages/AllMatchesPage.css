@@ -1,0 +1,469 @@
+.all-matches-total {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  padding: 0 11px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.8rem;
+}
+
+.all-matches-total strong {
+  margin-left: 5px;
+  color: #ffffff;
+}
+
+.all-matches-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  padding: 18px;
+}
+
+.all-matches-field {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  margin: 0;
+}
+
+.all-matches-field > span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.73rem;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+.all-matches-input-wrap,
+.all-matches-select {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  align-items: center;
+  width: 100%;
+  min-height: 42px;
+  gap: 8px;
+  padding: 0 11px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.all-matches-input-wrap:focus-within,
+.all-matches-select:focus-visible {
+  border-color: rgba(255, 83, 83, 0.68);
+  outline: 2px solid rgba(255, 83, 83, 0.12);
+}
+
+.all-matches-input-wrap > svg,
+.all-matches-select > svg {
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 19px;
+}
+
+.all-matches-input-wrap input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.86rem;
+}
+
+.all-matches-input-wrap select {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.86rem;
+  cursor: pointer;
+}
+
+.all-matches-input-wrap select option {
+  background: #1a1a1c;
+  color: #ffffff;
+}
+
+.all-matches-input-wrap input::placeholder {
+  color: rgba(255, 255, 255, 0.32);
+}
+
+.all-matches-input-wrap input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.5;
+}
+
+.all-matches-select {
+  grid-template-columns: minmax(0, 1fr) 22px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.all-matches-clear {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 8px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.52);
+  cursor: pointer;
+}
+
+.all-matches-clear:hover {
+  color: #ff7474;
+}
+
+.all-matches-filter-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 0 18px 18px;
+}
+
+.all-matches-filter-tags button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  gap: 5px;
+  padding: 0 8px;
+  border: 1px solid rgba(255, 85, 85, 0.3);
+  border-radius: 4px;
+  background: rgba(255, 78, 78, 0.08);
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.all-matches-filter-tags svg {
+  font-size: 15px;
+}
+
+.all-matches-table-wrap {
+  overflow-x: auto;
+}
+
+.all-matches-table {
+  width: 100%;
+  min-width: 1020px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.all-matches-table th {
+  height: 46px;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.all-matches-table td {
+  height: 86px;
+  padding: 9px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.all-matches-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.all-matches-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.all-matches-table th:nth-child(1),
+.all-matches-table td:nth-child(1) {
+  width: 135px;
+}
+
+.all-matches-table th:nth-child(2),
+.all-matches-table td:nth-child(2),
+.all-matches-table th:nth-child(3),
+.all-matches-table td:nth-child(3) {
+  width: 24%;
+}
+
+.all-matches-table th:nth-child(4),
+.all-matches-table td:nth-child(4) {
+  width: auto;
+}
+
+.match-map-cell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 96px;
+  align-items: center;
+  gap: 14px;
+}
+
+.match-map-copy {
+  min-width: 0;
+}
+
+.match-map-preview {
+  display: grid;
+  width: 96px;
+  height: 64px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  background: rgba(5, 5, 6, 0.72);
+  color: rgba(255, 255, 255, 0.22);
+  cursor: zoom-in;
+}
+
+.match-map-preview:hover:not(:disabled),
+.match-map-preview:focus-visible {
+  border-color: rgba(255, 95, 95, 0.62);
+  outline: 2px solid rgba(255, 83, 83, 0.12);
+}
+
+.match-map-preview:disabled {
+  cursor: default;
+}
+
+.match-map-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.match-map-preview svg {
+  font-size: 25px;
+}
+
+.match-map-dialog.MuiPaper-root {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  background: #111113;
+  color: #ffffff;
+}
+
+.match-map-dialog-close.MuiIconButton-root {
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  right: 10px;
+  background: rgba(5, 5, 6, 0.78);
+  color: #ffffff;
+}
+
+.match-map-dialog-close.MuiIconButton-root:hover {
+  background: rgba(204, 48, 48, 0.9);
+}
+
+.match-map-dialog-image {
+  display: block;
+  width: 100%;
+  max-height: min(72vh, 720px);
+  object-fit: contain;
+  background: #050506;
+}
+
+.match-map-dialog-caption {
+  display: grid;
+  gap: 4px;
+  padding: 14px 18px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.match-map-dialog-caption strong {
+  font-size: 0.95rem;
+}
+
+.match-map-dialog-caption span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.78rem;
+}
+
+.all-matches-table td:first-child strong,
+.all-matches-table td:first-child span,
+.match-map-name,
+.match-map-meta {
+  display: block;
+}
+
+.all-matches-table td:first-child strong,
+.match-map-name {
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.84rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.all-matches-table td:first-child span,
+.match-map-meta {
+  margin-top: 5px;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.72rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.match-player {
+  display: grid;
+  min-width: 0;
+  gap: 7px;
+  padding-left: 10px;
+  border-left: 2px solid;
+}
+
+.match-team {
+  display: grid;
+  min-width: 0;
+  gap: 9px;
+}
+
+.match-team .match-player + .match-player {
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.match-player-winner {
+  border-left-color: #42bc85;
+}
+
+.match-player-loser {
+  border-left-color: #e45f64;
+}
+
+.match-player-heading {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.match-player-heading > a {
+  overflow: hidden;
+  color: #f3f3f4;
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.match-player-heading > a:hover {
+  color: #ff7777;
+}
+
+.match-player-elo {
+  flex: 0 0 auto;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 0.68rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.match-faction {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.72rem;
+}
+
+.match-faction img {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  object-fit: contain;
+}
+
+.match-faction i {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: #a9b0b6;
+}
+
+.match-faction span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.match-faction-men i { background: #64b5f6; }
+.match-faction-elves i { background: #72c77a; }
+.match-faction-goblins i { background: #a4c75d; }
+.match-faction-dwarves i { background: #e2a657; }
+.match-faction-mordor i { background: #e65b5b; }
+.match-faction-isengard i { background: #9c8075; }
+.match-faction-angmar i { background: #91a5af; }
+.match-faction-gondor i { background: #dfe7ef; }
+.match-faction-rohan i { background: #6fbf73; }
+.match-faction-arnor i { background: #75c7df; }
+.match-faction-harad i { background: #df6b91; }
+.match-faction-lothlorien i { background: #9fca73; }
+.match-faction-imladris i { background: #51bdc7; }
+.match-faction-misty i { background: #b4a199; }
+
+.all-matches-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 18px;
+}
+
+.all-matches-pagination button {
+  min-width: 38px;
+  height: 36px;
+  padding: 0 11px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 4px;
+  background: rgba(20, 20, 21, 0.94);
+  color: rgba(255, 255, 255, 0.68);
+  cursor: pointer;
+}
+
+.all-matches-pagination button:hover:not(:disabled),
+.all-matches-pagination button.is-active {
+  border-color: rgba(255, 82, 82, 0.56);
+  background: rgba(255, 75, 75, 0.12);
+  color: #ff7777;
+}
+
+.all-matches-pagination button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+@media (max-width: 900px) {
+  .all-matches-filter-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .all-matches-filter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .all-matches-pagination {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+}

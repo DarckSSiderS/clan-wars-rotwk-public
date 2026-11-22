@@ -1,0 +1,30 @@
+.cycle-battles.cycle-battle-screen .cycle-match > summary { grid-template-columns: 30px minmax(0, 1fr) 108px 136px 20px; align-items: start; gap: 20px; padding: 20px 22px; }
+.cycle-battles.cycle-battle-screen .cycle-match > summary > .cycle-badge { min-width: 72px; text-align: center; justify-content: center; }
+.cm-overview { display: grid; gap: 15px; min-width: 0; }
+.cm-match-meta { display: flex; align-items: center; gap: 8px 18px; flex-wrap: wrap; font-size: 12px; color: var(--cw-text-secondary); }
+.cm-match-meta > strong { font-size: 14px; color: var(--cw-text-primary); }
+.cm-match-meta > span { display: inline-flex; align-items: center; gap: 5px; }
+.cm-match-meta svg { width: 15px; height: 15px; }
+.cm-teams { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 14px 28px; }
+.cm-team { display: grid; gap: 8px; align-content: start; padding-left: 12px; border-left: 2px solid #87453c; }
+.cm-team-won { border-left-color: #8fa780; }
+.cm-team-outcome { display: flex; align-items: center; gap: 6px; color: #c58f85; font-size: 11px; }
+.cm-team-won .cm-team-outcome { color: #a8c49a; }
+.cm-team-outcome svg { width: 15px; height: 15px; }
+.cm-team .cycle-match-names { display: grid; gap: 5px; font-size: 18px; line-height: 1.45; font-weight: 600; }
+.cm-unknown-team { display: grid; gap: 6px; }
+.cm-effects { display: flex; gap: 10px 24px; flex-wrap: wrap; border-top: 1px solid var(--cw-border-subtle); padding-top: 12px; }
+.cm-effects > span { display: inline-flex; gap: 10px; align-items: baseline; font-size: 12px; color: var(--cw-text-secondary); }
+.cm-effects b { font-size: 17px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cm-map-preview { display: grid; place-items: center; width: 108px; height: 76px; border: 1px solid var(--cw-border-subtle); border-radius: 3px; overflow: hidden; background: var(--cw-bg-surface); color: var(--cw-gold-dark); }
+.cm-map-preview img { width: 100%; height: 100%; object-fit: contain; }
+.cm-map-preview svg { width: 30px; height: 30px; }
+.cm-feed-filters { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-bottom: 18px; }
+.cm-feed-filters > div { display: flex; gap: 4px; flex-wrap: wrap; }
+.cycle-battle-screen .cm-feed-filters button { padding: 7px 12px; min-height: 36px; font-size: 12px; border-color: transparent; background: transparent; color: var(--cw-text-secondary); }
+.cycle-battle-screen .cm-feed-filters button[aria-pressed="true"] { border-color: var(--cw-border-active); color: var(--cw-gold-light); background: var(--cw-bg-elevated); }
+.cm-feed-count { color: var(--cw-text-secondary); font-size: 12px; white-space: nowrap; }
+.cycle-battle-screen .cm-contributions-heading { font-size: 15px; padding-top: 12px; margin: 0; color: var(--cw-gold-light); }
+.cycle-battle-screen .cycle-match-body .cycle-contribution { padding: 18px 0; }
+@media (max-width: 1100px) { .cycle-battles.cycle-battle-screen .cycle-match > summary { grid-template-columns: 24px minmax(0, 1fr) 120px 18px; gap: 12px; } .cm-map-preview { display: none; } }
+@media (max-width: 600px) { .cycle-battles.cycle-battle-screen .cycle-match > summary { grid-template-columns: minmax(0, 1fr) 18px; padding: 16px; } .cycle-match-number { display: none; } .cm-overview { grid-column: 1 / -1; } .cycle-battles.cycle-battle-screen .cycle-match > summary > .cycle-badge { grid-column: 1; grid-row: 2; } .cycle-battles.cycle-battle-screen .cycle-match > summary > .cycle-disclosure-icon { grid-column: 2; grid-row: 2; } .cm-teams { grid-template-columns: minmax(0, 1fr); } .cm-feed-filters { align-items: flex-start; flex-direction: column; gap: 10px; } }

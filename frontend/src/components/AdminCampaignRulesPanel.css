@@ -1,0 +1,125 @@
+.campaign-rules-loading,
+.campaign-rules-history__loading {
+  display: grid;
+  min-height: 220px;
+  place-items: center;
+}
+
+.campaign-rules-toolbar,
+.campaign-rules-editor,
+.campaign-rules-savebar {
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.campaign-rules-toolbar,
+.campaign-rules-editor__controls,
+.campaign-rules-category__heading,
+.campaign-rule-field__heading,
+.campaign-rules-history__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.campaign-rules-toolbar .MuiStack-root {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.campaign-rules-editor__controls {
+  margin-bottom: 16px;
+}
+
+.campaign-rules-editor__controls .MuiTextField-root {
+  width: min(100%, 360px);
+}
+
+.campaign-rules-category__heading {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.campaign-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.campaign-rule-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-left: 3px solid rgba(255, 255, 255, .16);
+  background: rgba(255, 255, 255, .025);
+}
+
+.campaign-rule-field.is-changed {
+  border-left-color: #edb64c;
+  background: rgba(125, 83, 13, .12);
+}
+
+.campaign-rule-field code {
+  overflow-wrap: anywhere;
+}
+
+.campaign-rules-savebar {
+  position: sticky;
+  z-index: 2;
+  bottom: 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid rgba(255, 255, 255, .12);
+}
+
+.campaign-rules-savebar .MuiButton-root {
+  min-height: 48px;
+}
+
+.campaign-rules-empty {
+  padding: 32px 0;
+  text-align: center;
+}
+
+.campaign-rules-history__row {
+  min-height: 84px;
+  padding: 12px 0;
+}
+
+@media (max-width: 800px) {
+  .campaign-rules-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .campaign-rules-toolbar,
+  .campaign-rules-editor__controls,
+  .campaign-rules-savebar {
+    align-items: stretch;
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+
+  .campaign-rules-toolbar .MuiStack-root,
+  .campaign-rules-editor__controls .MuiTextField-root {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .campaign-rules-toolbar,
+  .campaign-rules-editor,
+  .campaign-rules-savebar {
+    padding: 12px;
+  }
+
+  .campaign-rules-history__row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

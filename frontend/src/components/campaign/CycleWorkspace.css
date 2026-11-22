@@ -1,0 +1,111 @@
+.cycle-workspace {
+  --cycle-workspace-top: var(--cw-header-height);
+  flex: 1;
+  min-width: 0;
+  color: var(--cw-text-primary);
+}
+
+.cycle-workspace__navigation {
+  position: sticky;
+  top: var(--cycle-workspace-top);
+  z-index: calc(var(--cw-z-header) - 1);
+  background: var(--cw-bg-canvas);
+  border-bottom: 1px solid var(--cw-border-subtle);
+}
+
+.cycle-workspace .cycle-navigation {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) auto;
+  width: min(var(--cw-content-max), calc(100% - 64px));
+  gap: 4px;
+  margin: 0 auto;
+  border: 0;
+}
+
+.cycle-workspace .cycle-navigation a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  min-height: 56px;
+  padding: 10px 16px;
+  color: var(--cw-text-secondary);
+  background: transparent;
+  border-bottom: 2px solid transparent;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.4;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.cycle-workspace .cycle-navigation a svg {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+}
+
+.cycle-workspace .cycle-navigation a:hover {
+  color: var(--cw-text-primary);
+  background: var(--cw-bg-hover);
+}
+
+.cycle-workspace .cycle-navigation a[aria-current="page"] {
+  color: var(--cw-gold-light);
+  border-bottom-color: var(--cw-gold);
+  background: var(--cw-bg-surface);
+}
+
+.cycle-workspace .cycle-navigation a:focus-visible {
+  outline: 2px solid var(--cw-gold-light);
+  outline-offset: -4px;
+}
+
+.cycle-workspace .cycle-navigation__map {
+  margin-inline-start: 16px;
+  border-inline-start: 1px solid var(--cw-border-subtle);
+}
+
+.cycle-workspace > .cycle-workspace__content > .cw-page-shell {
+  width: min(var(--cw-content-max), calc(100% - 64px));
+  padding: 32px 0 64px;
+}
+
+.cycle-workspace .co-back,
+.cycle-workspace .cr-back,
+.cycle-workspace .cycle-preparation > header + a {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .cycle-workspace .cycle-navigation {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cycle-workspace .cycle-navigation a {
+    min-height: 48px;
+    gap: 6px;
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+
+  .cycle-workspace .cycle-navigation__map {
+    margin-inline-start: 0;
+    border-inline-start: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .cycle-workspace .cycle-navigation,
+  .cycle-workspace > .cycle-workspace__content > .cw-page-shell {
+    width: calc(100% - 32px);
+  }
+
+  .cycle-workspace .cycle-navigation a {
+    flex-direction: column;
+    min-height: 64px;
+  }
+}
